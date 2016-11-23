@@ -25,6 +25,8 @@ $(function()
 			clickToEdit: true,
 			clickToCancel: '#btn-cancel',
 			clickToSave: '#btn-save',
+			placeholder: 'Type your post here',
+			tabAsSpaces: 4,
 			callbacks: {
 					save: function(html)
 					{
