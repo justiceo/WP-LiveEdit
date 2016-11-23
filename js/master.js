@@ -17,9 +17,11 @@ $(function()
 	    $('#redactor').redactor({
 		    imageUpload: '/ajax/redactor/core/uploadImage/',
             fileUpload: '/ajax/redactor/core/uploadFile/',
-            plugins: ['table', 'video', 'source'],
+            plugins: ['table', 'video', 'source', 'fullscreen', 'imagemanager'],
             imagePosition: true,
-            imageResizable: true
+            imageResizable: true,
+			imageUpload: '/upload.php',
+            imageManagerJson: '/images/images.json'
         });
     }
 
