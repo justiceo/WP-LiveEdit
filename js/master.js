@@ -38,6 +38,10 @@ $(function()
 					}
 				},
 			});
+			
+		$('#post-title').redactor({
+			clickToEdit: true
+		});
     }
 
 
