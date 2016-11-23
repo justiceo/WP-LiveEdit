@@ -15,14 +15,27 @@ $(function()
     if ($('#redactor-intro-box').size() !== 0)
     {
 	    $('#redactor').redactor({
-		    imageUpload: '/ajax/redactor/core/uploadImage/',
-            fileUpload: '/ajax/redactor/core/uploadFile/',
-            plugins: ['table', 'video', 'source', 'fullscreen', 'imagemanager'],
-            imagePosition: true,
-            imageResizable: true,
+			plugins: ['table', 'video', 'source', 'fullscreen', 'imagemanager'],	
+			imageUpload: '/a/url/here',
+			fileUpload: '/a/url/here',
+			imagePosition: true,
+			imageResizable: true,
 			imageUpload: '/upload.php',
-            imageManagerJson: '/images/images.json'
-        });
+			imageManagerJson: '/upload.php',
+			clickToEdit: true,
+			clickToCancel: '#btn-cancel',
+			clickToSave: '#btn-save',
+			callbacks: {
+					save: function(html)
+					{
+						console.log('save', html);
+					},
+					cancel: function(html)
+					{
+						console.log('cancel', html);
+					}
+				},
+			});
     }
 
 
