@@ -15,7 +15,7 @@ $(function()
     if ($('#redactor-intro-box').size() !== 0)
     {
 	    $('#redactor').redactor({
-			plugins: ['table', 'video', 'source', 'fullscreen', 'imagemanager'],	
+			plugins: ['table', 'video', 'source', 'fullscreen', 'imagemanager', 'comment'],	
 			imageUpload: '/a/url/here',
 			fileUpload: '/a/url/here',
 			imagePosition: true,
@@ -38,10 +38,9 @@ $(function()
 					}
 				},
 			});
-			
-		$('#post-title').redactor({
-			clickToEdit: true
-		});
+		
+		// trigger this only when user clicks edit
+		$('#post-title').redactor();
     }
 
 
