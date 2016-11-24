@@ -18,7 +18,7 @@
 			},
 			insert: function()
 			{	
-				this.inline.format('com', {'title': $('#insert-comment-area').val() });				
+				this.inline.format('com', 'title', $('#insert-comment-area').val());				
 				this.modal.close();
 				this.selection.remove();
 			},
