@@ -1,3 +1,12 @@
+/**
+Auth Plugin
+===============
+Helps with authenticating users, determining their roles and persisting identity with changes made
+Base requirements / idea:
+- Option to disable the plugin when user is not logged in.
+- Abstracts over authenticated requests by handling all oauth stuff
+- Answers the question of who is editing this document? their name, role etc
+*/
 (function($)
 {
 	$.Redactor.prototype.auth = function()
@@ -48,7 +57,9 @@
 			},
 			login: function()
 			{	
-				this.inline.format('com', 'title', $('#insert-auth-area').val());				
+				// grab username and password
+                var username = $("#auth-username").val();
+                var password = $("auth-password").val();                
 				this.modal.close();
 				this.selection.remove();
 			}
