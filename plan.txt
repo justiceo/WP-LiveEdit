@@ -1,12 +1,6 @@
-// with redactor
-* search exhaustively for all other plugins that might be doing something similar
-	- wp plublisher
-	- wysiwyg editor wp
-	- wp text-editor
-	- ckeditor for wp
-* try to find a free version of the plugin.
+# WP-Redactor
 
-// backend
+Backend
 ==========
 * loading necessary scripts in wrapper when necessary
 * create a wordpress wrapper
@@ -14,17 +8,9 @@
 * add api call for creating posts.
 * pre-rendering shortcodes in page.
 * deleting a post. should delete all revisions (make conditional).
+* retrieving history
+* retrieving and persisting redactor options.
 
-
-
-* multiple redactor instances per page, save should save all of them though
-* separate ones for header, featured image, content, categories and tags
-
-// from the admin dashboard
-* a lot of options can be saved into one big json object and thrown to db
-* plugin loads and makes call the blob
-* specify  classes for title, content, categories and tags 
-* add front-end quality tools - like word count, readability scale, seo grade, image titles and alt attributes
 
 Story Line
 ==========
@@ -33,9 +19,6 @@ Story Line
 * Api call to post creates the post with demo featured image (crafter), sample content and generic categories
 * On load redactor initializes editor for title, featured image, content and categories. 
 * On save, the server takes the current version of the post in db, moves it to a revisions table and updates.(revisions have both time and description)
-
-
-	
 
 
 Plugins
@@ -62,6 +45,7 @@ Post settings
 	- Enable auto-save.
 	- Post excerpt
 	- Delete post functionality
+	- Save and Notify handler (for authors and other stake holders)
 	
 Core Extensions
 	- User roles
@@ -75,16 +59,19 @@ History
 	- Recover post, takes the current and puts in revision and takes this older post from revisions and puts it back to the main on.
 	- Delete revision, simply removes the entry from the revisions db, super simple I suppose.
 
-Save and Notify feature (for authors and other stake holders)
-
-Widgets to be saved as shortcode, content displays after saving and serverside pre-render happens
+Widgets 
+	- to be saved as shortcode, 
+	- content displays after saving and serverside pre-render happens
 	- widgets in posts, non-editable sections
+	
 Post quality:
 	- words counter
 	- image to text ratio
+	- image titles and alt
 	- excerpt
 	- categories and tags
 	- spell checker.
+	- readability scale
 	
 Refactorings
 ============
@@ -108,3 +95,16 @@ Implementation
 * featured image doesn't have to be included as it is persisted as url not the html in the database.
 * create post settings that includes
 	- featured image (pre-rendered in UI though)
+	
+WP-Plugin Options
+=================
+* specify  classes for title, content, categories and tags 
+* determine what admins, editors and authors see.
+* persists json object to wp-options tables
+* admins can add and manage import profiles.
+
+Final notes
+===========
+* multiple redactor instances per page, save should save all of them though
+* separate ones for header, featured image, content, categories and tags
+* as much of what can be simplified in front-end should be simplified in front-end.
