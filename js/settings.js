@@ -10,7 +10,8 @@ Features:
 - Post categories and tags.
 */
 (function($)
-{
+{   
+    'use strict';
 	$.Redactor.prototype.settings = function()
 	{
 		return {			

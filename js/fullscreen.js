@@ -1,5 +1,6 @@
 (function($)
-{
+{   
+    'use strict';
 	$.Redactor.prototype.fullscreen = function()
 	{
 		return {

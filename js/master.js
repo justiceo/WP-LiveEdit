@@ -1,5 +1,6 @@
 $(function()
-{
+{   
+    'use strict';
 	if (window.devicePixelRatio >= 1.5)
 	{
 		var images = $("img.hires");

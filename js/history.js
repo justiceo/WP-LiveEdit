@@ -10,7 +10,8 @@ Basic requirements
 - Server requests can be mocked
 */
 (function($)
-{
+{   
+    'use strict';
 	$.Redactor.prototype.history = function()
 	{
 		return {			

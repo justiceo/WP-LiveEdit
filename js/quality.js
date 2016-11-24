@@ -12,8 +12,10 @@ Features;
 - spell checker
 - readability scale
 */
-(function($)
-{
+
+(function ($)
+{   
+    'use strict';
 	$.Redactor.prototype.quality = function()
 	{
 		return {			

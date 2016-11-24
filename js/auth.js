@@ -8,7 +8,8 @@ Base requirements / idea:
 - Answers the question of who is editing this document? their name, role etc
 */
 (function($)
-{
+{   
+    'use strict';
 	$.Redactor.prototype.auth = function()
 	{
 		return {			

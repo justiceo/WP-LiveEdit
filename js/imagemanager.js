@@ -1,5 +1,6 @@
 (function($)
-{
+{   
+    'use strict';
 	$.Redactor.prototype.imagemanager = function()
 	{
 		return {

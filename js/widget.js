@@ -14,7 +14,8 @@ Base requirements / idea:
 
 */
 (function($)
-{
+{   
+    'use strict';
 	$.Redactor.prototype.widget = function()
 	{
 		return {			
