@@ -39,7 +39,7 @@ Features:
 			getTemplate: function()
 			{
 				return String()
-				+ '<div class="modal-section" id="redactor-modal-comment-insert">'
+				+ '<div class="modal-section" id="redactor-modal-settings">'
 					+ '<section>'						
 						+ '<p>Provides the options to manage a post\'s meta-data. Essentially anything we do not want to cloud the editing interface. </p>'
 					+ '</section>'
