@@ -24,9 +24,19 @@
 			},
 			show: function()
 			{
-				if(!this.selection.isRedactor()) return; // no selection
-				this.comment.selection = this.selection.get(); // there's one, so stash the selection.
-				console.log("sel ", this.comment.selection);
+				// if the parent is already comment, we uncomment it and return
+				if(this.selection.parent().tagName == "COM"){
+					// select the entire parent
+					this.selection.node(this.selection.parent());
+					this.inline.format('com', 'title', $('#insert-comment-area').val(), 'remove');				
+					this.selection.remove();
+					return;
+				}
+				
+				// check if there is actually a real selection
+				if(!this.selection.is() || !this.selection.isRedactor()) return; // no selection
+					
+				// otherwise we add new comment
 				this.modal.addTemplate('comment', this.comment.getTemplate());
 				this.modal.load('comment', this.lang.get('comment'), 400);
 
