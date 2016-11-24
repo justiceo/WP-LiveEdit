@@ -29,14 +29,11 @@ Post importer - separate from redactor
 	- redirects user to newly created post (and enables redactor) automatically
 
 Comments
-	- are included in the posts as innocent tags <comment id="234">some content here</comment>.
+	- are included in the posts as innocent tags <comment title="boy is misspelled">Adam is a boi</comment>.
 	- does not affect post styling unless in editing mode
-	- somewhere down below the comments content are displayed and hidden <comments-for id="234">editors words</comments-for>
-	- comments-for are hidden rednered beside their comments when user hovers over the comment icon.
-	- comments can be deleted when they're opened, the content box should contain a "fixed" button
-	- there can be comments within comments - as it doesn't affect style - so put comment carret at end of comment.
-	- comments are applied the way bold or link is applied. Use makes a selection then comes a pop up for them to enter words.
-	- allow threaded comments
+	- comments cannot be deleted by selecting any portion of a commented area and clicking the comment button
+	- there cannot be comments within comments 
+	- comments are applied the way bold or link is applied. User makes a selection then comes a pop up for them to enter words.
 
 Post settings
 	- Featured image
@@ -47,7 +44,7 @@ Post settings
 	- Delete post functionality
 	- Save and Notify handler (for authors and other stake holders)
 	
-Core Extensions
+Core Extensions - since this would require a lot of comm with server, perform last after plugin integration
 	- User roles
 	- Post load and save events
 	- Load options from wp_options to determine what get's displayed into UI
