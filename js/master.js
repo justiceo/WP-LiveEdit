@@ -15,7 +15,7 @@ $(function()
     if ($('#redactor-intro-box').size() !== 0)
     {
 	    $('#redactor').redactor({
-			plugins: ['table', 'video', 'source', 'imagemanager', 'comment', 'settings'],	
+			plugins: ['table', 'video', 'source', 'imagemanager', 'comment', 'settings', 'history'],	
 			imageUpload: '/a/url/here',
 			imagePosition: true,
 			imageResizable: true,
