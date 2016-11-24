@@ -9,37 +9,25 @@
 					"modal-label": "Enter your comments below"
 				}
 			},
-			comments: [],
 			init: function()
 			{
 				var button = this.button.add('comment', 'Comment', this.lang.get('comment'));
-				// load all the comments on the page first.
-				this.comments = [];
 				
 				// initialize add new button
 				this.button.addCallback(button, this.comment.show);
 			},
 			insert: function()
-			{
-				console.log("hello world" + this.selection.get());
-				
-				var comment_id = this.comments.length;
-				var selection = this.comment.selection;
-				if(selection.length == 0) return;
-				var marked_selection = '<com for="' + comment_id + '">' + selection + '</com>';
-				this.comments.push(comment_id);
-				this.selection.replace(marked_selection);
-				
+			{	
+				this.inline.format('com', {'title': $('#insert-comment-area').val() });				
 				this.modal.close();
-				this.placeholder.hide();
-				
-				// display modal for editor to enter comments.
+				this.selection.remove();
 			},
 			show: function()
 			{
-				this.comment.selection = this.selection.get();
+				if(!this.selection.isRedactor()) return; // no selection
+				this.comment.selection = this.selection.get(); // there's one, so stash the selection.
+				console.log("sel ", this.comment.selection);
 				this.modal.addTemplate('comment', this.comment.getTemplate());
-
 				this.modal.load('comment', this.lang.get('comment'), 400);
 
 				// action button
@@ -55,8 +43,6 @@
 
 					}, 1);
 				}
-
-
 			},
 			getTemplate: function()
 			{
