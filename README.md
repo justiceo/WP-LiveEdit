@@ -1,4 +1,7 @@
-# WP-Redactor
+# WP-LiveEdit
+
+A front-end WYSIWYG post editing tool to improve writing experience for bloggers.
+Light weight and modular. Clean code.
 
 Backend
 ==========
