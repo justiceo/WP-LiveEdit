@@ -3,8 +3,15 @@
 A front-end WYSIWYG post editing tool to improve writing experience for bloggers.
 Light weight and modular. Clean code.
 
-Backend
-==========
+
+###Story Line
+* User clicks on "Write a Story", a pop up appears asking to enter post title.
+* On "Create", api call to create post made, after creation, redirect to post.
+* Api call to post creates the post with demo featured image (crafter), sample content and generic categories
+* On load redactor initializes editor for title, featured image, content and categories. 
+* On save, the server takes the current version of the post in db, moves it to a revisions table and updates.(revisions have both time and description)
+
+###Plugin (WP)
 * loading necessary scripts in wrapper when necessary
 * create a wordpress wrapper
 * add api calls for saving posts (later include revisions)
@@ -14,67 +21,57 @@ Backend
 * retrieving history
 * retrieving and persisting redactor options.
 
+###Plugins (JS)
 
-Story Line
-==========
-* User clicks on "Write a Story", a pop up appears asking to enter post title.
-* On "Create", api call to create post made, after creation, redirect to post.
-* Api call to post creates the post with demo featured image (crafter), sample content and generic categories
-* On load redactor initializes editor for title, featured image, content and categories. 
-* On save, the server takes the current version of the post in db, moves it to a revisions table and updates.(revisions have both time and description)
+####Post importer 
+- creates a post with a given a title,
+- mainly php magic
+- redirects user to newly created post (and enables redactor) automatically
 
+####Comments
+- are included in the posts as innocent tags <comment title="boy is misspelled">Adam is a boi</comment>.
+- does not affect post styling unless in editing mode
+- comments cannot be deleted by selecting any portion of a commented area and clicking the comment button
+- there cannot be comments within comments 
+- comments are applied the way bold or link is applied. User makes a selection then comes a pop up for them to enter words.
 
-Plugins
-=======
-Post importer - separate from redactor
-	- creates a post with a given a title,
-	- mainly php magic
-	- redirects user to newly created post (and enables redactor) automatically
+####Post settings
+- Featured image
+- Tags and categories
+- Post status => draft, publish, future, pending, review, art
+- Enable auto-save.
+- Post excerpt
+- Delete post functionality
+- Save and Notify handler (for authors and other stake holders)
 
-Comments
-	- are included in the posts as innocent tags <comment title="boy is misspelled">Adam is a boi</comment>.
-	- does not affect post styling unless in editing mode
-	- comments cannot be deleted by selecting any portion of a commented area and clicking the comment button
-	- there cannot be comments within comments 
-	- comments are applied the way bold or link is applied. User makes a selection then comes a pop up for them to enter words.
-
-Post settings
-	- Featured image
-	- Tags and categories
-	- Post status => draft, publish, future, pending, review, art
-	- Enable auto-save.
-	- Post excerpt
-	- Delete post functionality
-	- Save and Notify handler (for authors and other stake holders)
+####Core Extensions
+since this would require a lot of comm with server, perform last after plugin integration
+- User roles
+- Post load and save events
+- Load options from wp_options to determine what get's displayed into UI
+- provides abraction over wp rest api and specific data type ajax requests.
 	
-Core Extensions - since this would require a lot of comm with server, perform last after plugin integration
-	- User roles
-	- Post load and save events
-	- Load options from wp_options to determine what get's displayed into UI
-	- provides abraction over wp rest api and specific data type ajax requests.
-	
-History
-	- Get revisions, server returns all revisions item for this post id, displaying date, description of changes and who made the change.
-	- See if you can use wp-native revisions to achieve this since the feature is already present in wp.
-	- Recover post, takes the current and puts in revision and takes this older post from revisions and puts it back to the main on.
-	- Delete revision, simply removes the entry from the revisions db, super simple I suppose.
+####History
+- Get revisions, server returns all revisions item for this post id, displaying date, description of changes and who made the change.
+- See if you can use wp-native revisions to achieve this since the feature is already present in wp.
+- Recover post, takes the current and puts in revision and takes this older post from revisions and puts it back to the main on.
+- Delete revision, simply removes the entry from the revisions db, super simple I suppose.
 
-Widgets 
-	- to be saved as shortcode, 
-	- content displays after saving and serverside pre-render happens
-	- widgets in posts, non-editable sections
+####Widgets 
+- to be saved as shortcode, 
+- content displays after saving and serverside pre-render happens
+- widgets in posts, non-editable sections
 	
-Post quality:
-	- words counter
-	- image to text ratio
-	- image titles and alt
-	- excerpt
-	- categories and tags
-	- spell checker.
-	- readability scale
+####Post quality:
+- words counter
+- image to text ratio
+- image titles and alt
+- excerpt
+- categories and tags
+- spell checker.
+- readability scale
 	
-Refactorings
-============
+###Refactorings
 * Merge Video into a tab in imagemanager as brand both as "media".
 * Extract list buttons as icons on main toolbar (remove indents)
 * Extract quote as icons on main toolbar
@@ -83,8 +80,7 @@ Refactorings
 * make comments text display nicely, use a tooltip library.
 
 
-Implementation
-==============
+###Implementation
 * add post import tab in admin dashboard.
 * 	- lists all import profiles, allow update and delete
 *	- add new profile is a form where user enter's the classes for post title, featured-image,  content, categories and categories
@@ -96,15 +92,13 @@ Implementation
 * create post settings that includes
 	- featured image (pre-rendered in UI though)
 	
-WP-Plugin Options
-=================
+###WP-Plugin Options
 * specify  classes for title, content, categories and tags 
 * determine what admins, editors and authors see.
 * persists json object to wp-options tables
 * admins can add and manage import profiles.
 
-Final notes
-===========
+###Final notes
 * multiple redactor instances per page, save should save all of them though
 * separate ones for header, featured image, content, categories and tags
 * as much of what can be simplified in front-end should be simplified in front-end.
