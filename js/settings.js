@@ -24,6 +24,7 @@ Features:
 			init: function()
 			{
 				var button = this.button.add('settings', 'Settings', this.lang.get('settings'));
+                this.button.setIcon(button, '<i class="fa fa-sliders"></i>');
 				this.button.addCallback(button, this.settings.show);
 				console.log("settings is good");
 			},

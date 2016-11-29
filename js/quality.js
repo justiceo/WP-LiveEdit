@@ -28,6 +28,7 @@ Features;
 			init: function()
 			{
 				var button = this.button.add('quality', 'Post Quality');
+                this.button.setIcon(button, '<i class="fa fa-flag-checkered"></i>');
 				// initialize add new button
 				this.button.addCallback(button, this.quality.show);
 			},

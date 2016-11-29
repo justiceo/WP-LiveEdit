@@ -27,6 +27,7 @@ Base requirements / idea:
 			init: function()
 			{
 				var button = this.button.add('widget', 'Widgets', this.lang.get('widget'));
+                this.button.setIcon(button, '<i class="fa fa-th-large"></i>');
 				this.button.addCallback(button, this.widget.show);
 				console.log("widget is good");
 			},

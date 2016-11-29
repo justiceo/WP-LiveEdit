@@ -12,7 +12,8 @@
 			},
 			init: function()
 			{
-				var button = this.button.add('comment', 'Comment', this.lang.get('comment'));
+				var button = this.button.add('comment', 'Comment', this.lang.get('comment'));                
+                this.button.setIcon(button, '<i class="fa fa-comment-o"></i>');
 				
 				// initialize add new button
 				this.button.addCallback(button, this.comment.show);

@@ -24,6 +24,7 @@ Basic requirements
 			init: function()
 			{
 				var button = this.button.add('history', 'History', this.lang.get('history'));
+                this.button.setIcon(button, '<i class="fa fa-clock-o"></i>');
 				this.button.addCallback(button, this.history.show);
 				console.log("history is good");
 			},

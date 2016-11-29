@@ -15,8 +15,24 @@ $(function()
 
     if ($('#redactor-intro-box').size() !== 0)
     {
+        var pluginsToLoad = ['table', 
+                             'video', 
+                             'horizontalrule',
+                             'source', 
+                             'imagemanager', 
+                             'comment', 
+                             'settings', 
+                             'history', 
+                             'widget', 
+                             'auth', 
+                             'quality', 
+                             'bufferbuttons', 
+                             'underline', 
+                             'iconic'
+                            ];
+        
 	    $('#redactor').redactor({
-			plugins: ['table', 'video', 'source', 'imagemanager', 'comment', 'settings', 'history', 'widget', 'auth', 'quality', 'bufferbuttons', 'underline'],	
+			plugins: pluginsToLoad,	
 			imageUpload: '/a/url/here',
 			imagePosition: true,
 			imageResizable: true,
@@ -26,6 +42,7 @@ $(function()
 			clickToCancel: '#btn-cancel',
 			clickToSave: '#btn-save',
 			placeholder: 'Type your post here',
+            formatting: ['p', 'h3', 'h4', 'h5'],
 			tabAsSpaces: 4,
 			callbacks: {
 					save: function(html)
