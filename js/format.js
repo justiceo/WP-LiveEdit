@@ -6,7 +6,6 @@
         return {
             init: function()
             {
-                console.log("underline is good");
                 var button = this.button.addAfter('italic', 'underline', 'U');
                 this.button.addCallback(button, this.underline.format);
             },
@@ -50,4 +49,24 @@
             }
         };
     };
+})(jQuery);
+
+// UnderLine format
+(function($)
+{
+    $.Redactor.prototype.horizontalrule = function()
+    {
+        return {
+            init: function()
+            {
+                var button = this.button.addBefore('lists', 'horizontalrule');
+                this.button.addCallback(button, this.horizontalrule.format);
+            },
+            format: function()
+            {
+                this.line.insert();
+            }
+        };
+    };
+ 
 })(jQuery);
