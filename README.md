@@ -70,6 +70,15 @@ since this would require a lot of comm with server, perform last after plugin in
 - categories and tags
 - spell checker.
 - readability scale
+
+####Media Manager:
+- upload images or specify video url
+- select images from Kasoma media library
+- select images from shutterstock
+- request custom design image ("Describe your image in fine details and our graphics designers will take it from there"). Place holder with image name is used instead.
+- if image request, show the "needs" image on the post listing in wp-admin
+
+&nbsp;
 	
 ###Refactorings
 * Merge Video into a tab in imagemanager as brand both as "media".
