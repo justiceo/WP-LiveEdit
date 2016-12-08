@@ -1,24 +1,32 @@
-# WP-LiveEdit: Requirements Document
+# WP-LiveEdit
 
 A front-end WYSIWYG post editing tool to improve writing experience for bloggers.
 Light weight and modular. Clean code.
 
-Tasks are to be created from this doc.
+
+###Story Line
+* User clicks on "Write a Story", a pop up appears asking to enter post title.
+* On "Create", api call to create post made, after creation, redirect to post.
+* Api call to post creates the post with demo featured image (crafter), sample content and generic categories
+* On load redactor initializes editor for title, featured image, content and categories. 
+* On save, the server takes the current version of the post in db, moves it to a revisions table and updates.(revisions have both time and description)
+
+###Plugin (WP)
+* loading necessary scripts in wrapper when necessary
+* create a wordpress wrapper
+* add api calls for saving posts (later include revisions)
+* add api call for creating posts.
+* pre-rendering shortcodes in page.
+* deleting a post. should delete all revisions (make conditional).
+* retrieving history
+* retrieving and persisting redactor options.
+
+###Plugins (JS)
 
 ####Post importer 
-
-*Description*
 - creates a post with a given a title,
 - mainly php magic
 - redirects user to newly created post (and enables redactor) automatically
-
-*Implementation Notes*
-
-
-
-*Dependencies*
-
-
 
 ####Comments
 - are included in the posts as innocent tags <comment title="boy is misspelled">Adam is a boi</comment>.
@@ -70,11 +78,10 @@ since this would require a lot of comm with server, perform last after plugin in
 - request custom design image ("Describe your image in fine details and our graphics designers will take it from there"). Place holder with image name is used instead.
 - if image request, show the "needs" image on the post listing in wp-admin
 
-####Mode
-- Divide functionality into "Basic", "Advanced" views/profiles
-- Basic view displays all the tools necessary for quick editing without the rest of the garbage
-- Advanced displays all available tools and functionality
-- Allow adding new edit mode
+####Read More tag:
+- No need for separate box for excerpt,
+- inserting <!--more Read More--> does it automatically
+
 
 &nbsp;
 	
@@ -109,15 +116,3 @@ since this would require a lot of comm with server, perform last after plugin in
 * multiple redactor instances per page, save should save all of them though
 * separate ones for header, featured image, content, categories and tags
 * as much of what can be simplified in front-end should be simplified in front-end.
-
-
-
-###Plugin (WP)
-* loading necessary scripts in wrapper when necessary
-* create a wordpress wrapper
-* add api calls for saving posts (later include revisions)
-* add api call for creating posts.
-* pre-rendering shortcodes in page.
-* deleting a post. should delete all revisions (make conditional).
-* retrieving history
-* retrieving and persisting redactor options.
