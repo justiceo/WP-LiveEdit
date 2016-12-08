@@ -43,3 +43,6 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+redactor/css/redactor.css
+redactor/js/redactor-unminified.js
+redactor/js/redactor.js
