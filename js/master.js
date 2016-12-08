@@ -36,7 +36,6 @@ $(function()
 			imageUpload: '/a/url/here',
 			imagePosition: true,
 			imageResizable: true,
-			imageUpload: '/upload.php',
 			imageManagerJson: '/upload.php',
 			clickToEdit: true,
 			clickToCancel: '#btn-cancel',
