@@ -1,9 +1,11 @@
 js/redactor.js
 css/redactor.css
+*/node_modules/
+*/bower_components/
+
 quill/docs/
 .*
 quill/dist
-quill/node_modules
 quill/selenium
 quill/docs/_site
 *.log
