@@ -17,7 +17,6 @@ $(function()
     {
         var pluginsToLoad = ['table', 
                              'video', 
-                             'horizontalrule',
                              'source', 
                              'imagemanager', 
                              'comment', 
@@ -27,12 +26,13 @@ $(function()
                              'auth', 
                              'quality', 
                              'bufferbuttons', 
-                             'underline', 
-                             'iconic'
+                             'iconic',
+                             'fullscreen'
                             ];
-        
+        var toolbarButtons = ['format', 'bold', 'italic', 'underline', 'horizontalrule']
 	    $('#redactor').redactor({
 			plugins: pluginsToLoad,	
+            buttons: toolbarButtons,
 			imageUpload: '/a/url/here',
 			imagePosition: true,
 			imageResizable: true,

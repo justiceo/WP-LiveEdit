@@ -1,18 +1,26 @@
 // UnderLine format
 (function($)
 {
-    $.Redactor.prototype.underline = function()
+    $.Redactor.prototype.ounderline = function()
     {
         return {
             init: function()
             {
-                var button = this.button.addAfter('italic', 'underline', 'U');
-                this.button.addCallback(button, this.underline.format);
+                var button = this.button.addAfter('italic', 'ounderline', 'U');
+                this.button.addCallback(button, this.ounderline.format);
+                
+                var button2 = this.button.add('increase_indent', 'Indent');
+                this.button.addCallback(button2, this.indent.increase);
             },
             format: function()
             {
                 this.inline.format('u');
-            }
+            },
+            indentIncrease: function() {
+                this.indent.decrease();
+                console.log(this);
+                console.log(this.indent);
+            }        
         };
     };
  
@@ -54,13 +62,13 @@
 // UnderLine format
 (function($)
 {
-    $.Redactor.prototype.horizontalrule = function()
+    $.Redactor.prototype.horizontalrules = function()
     {
         return {
             init: function()
             {
-                var button = this.button.addBefore('lists', 'horizontalrule');
-                this.button.addCallback(button, this.horizontalrule.format);
+                var button = this.button.addBefore('lists', 'horizontalrules');
+                this.button.addCallback(button, this.horizontalrules.format);
             },
             format: function()
             {

@@ -78,6 +78,11 @@ since this would require a lot of comm with server, perform last after plugin in
 - request custom design image ("Describe your image in fine details and our graphics designers will take it from there"). Place holder with image name is used instead.
 - if image request, show the "needs" image on the post listing in wp-admin
 
+####Read More tag:
+- No need for separate box for excerpt,
+- inserting <!--more Read More--> does it automatically
+
+
 &nbsp;
 	
 ###Refactorings
