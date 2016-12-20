@@ -1,5 +1,5 @@
 /* custom javascript */
 
-var editor = new MediumEditor('.editable', {
-    buttonLabels: 'fontawesome'
-});
+window.setTimeout( function() {
+        new MediumEditor('.editable');
+}, 1000);
