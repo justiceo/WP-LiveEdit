@@ -56,3 +56,4 @@ fabric.properties
 redactor/css/redactor.css
 redactor/js/redactor-unminified.js
 redactor/js/redactor.js
+medium-editor/dist/
