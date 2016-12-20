@@ -176,12 +176,17 @@ class SmartPen {
 		// load css
 		wp_register_style( $this->_token . '-medium-css', esc_url( $this->medium_editor_url ) . 'dist/css/medium-editor.min.css', array(), $this->_version );
 		wp_register_style( $this->_token . '-medium-theme', esc_url( $this->medium_editor_url ) . 'dist/css/themes/default.min.css', array(), $this->_version);
+		wp_register_style( $this->_token . '-medium-custom', esc_url( $this->medium_editor_url ) . 'main.css', array(), $this->_version);
+        
 		wp_enqueue_style( $this->_token . '-medium-css' );
 		wp_enqueue_style( $this->_token . '-medium-theme' );
+		wp_enqueue_style( $this->_token . '-medium-custom' );
 
 		// load scripts
 		wp_register_script( $this->_token . '-medium-js', esc_url( $this->medium_editor_url ) . 'dist/js/medium-editor.min.js', array(), $this->_version );
+        wp_register_script( $this->_token . '-medium-custom-js', esc_url( $this->medium_editor_url ) . 'main.js', array(), $this->_version );
 		wp_enqueue_script( $this->_token . '-medium-js' );
+        wp_enqueue_script( $this->_token . '-medium-custom-js' );
 	}
 
 	/**
