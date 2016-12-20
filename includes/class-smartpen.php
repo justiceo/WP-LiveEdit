@@ -161,8 +161,7 @@ class SmartPen {
 		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'css/frontend.css', array(), $this->_version );
 		wp_enqueue_style( $this->_token . '-frontend' );
 
-		if( is_user_logged_in() && is_single() )
-			$this->enqueue_medium_editor_files();
+		$this->enqueue_medium_editor_files();
 
 	} // End enqueue_styles ()
 
@@ -173,6 +172,8 @@ class SmartPen {
 	* @return void
 	*/
 	public function enqueue_medium_editor_files() {
+	    if(!$this->can_edit())
+	        return;
 		// load css
 		wp_register_style( $this->_token . '-medium-css', esc_url( $this->medium_editor_url ) . 'dist/css/medium-editor.min.css', array(), $this->_version );
 		wp_register_style( $this->_token . '-medium-theme', esc_url( $this->medium_editor_url ) . 'dist/css/themes/default.min.css', array(), $this->_version);
@@ -187,6 +188,32 @@ class SmartPen {
         wp_register_script( $this->_token . '-medium-custom-js', esc_url( $this->medium_editor_url ) . 'main.js', array(), $this->_version );
 		wp_enqueue_script( $this->_token . '-medium-js' );
         wp_enqueue_script( $this->_token . '-medium-custom-js' );
+	}
+
+	/**
+	* Determines if the current user can edit the current post
+	* @access public
+	* @since 1.0.0
+	* @return boolean
+	*/
+	public function can_edit() {
+	    // non logged-in users cannot edit and only the posts can be edited
+	    if( !is_user_logged_in() || !is_single() )
+	        return false;
+
+        $post = get_post();
+        $user = wp_get_current_user();
+
+        // any author can edit their post
+	    if( $user->ID == $post->post_author)
+	        return true;
+
+	    // an editor or admin can edit any post
+	    $allowed_roles = array('editor', 'administrator');
+        if( array_intersect($allowed_roles, $user->roles) )
+            return true;
+
+        return false;
 	}
 
 	/**
