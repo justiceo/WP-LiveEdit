@@ -1,22 +1,23 @@
-=== SmartPen ===
-Contributors: hlashbrooke
-Donate link: http://www.hughlashbrooke.com/donate
-Tags: wordpress, plugin, template
+=== WP-LivEdit ===
+Contributors: Justice Ogbonna
+Donate link: http://www.example.com/donate
+Tags: editor, WYSIWYG, front-end editing, tinymce, ckeditor, froala, quilljs, redactor, plugin, template
 Requires at least: 3.9
 Tested up to: 4.0
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This is where you craft a short, punchy description of your plugin
+A front-end WYSIWYG post editing tool to improve writing experience for bloggers.
+Light weight and modular. Clean code.
 
 == Description ==
 
-This is where you can give a much longer description of your plugin that you can use to explain just how it awesome it really is.
+Some really long version here
 
 == Installation ==
 
-Installing "SmartPen" can be done either by searching for "SmartPen" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
+Installing "WP-LivEdit" can be done either by searching for "WP-LivEdit" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
 
 1. Download the plugin via WordPress.org
 1. Upload the ZIP file through the 'Plugins > Add New > Upload' screen in your WordPress dashboard
