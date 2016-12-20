@@ -76,6 +76,8 @@ class SmartPen {
 	 */
 	public $script_suffix;
 
+	public $medium_editor_url;
+
 	/**
 	 * Constructor function.
 	 * @access  public
@@ -91,6 +93,7 @@ class SmartPen {
 		$this->dir = dirname( $this->file );
 		$this->assets_dir = trailingslashit( $this->dir ) . 'assets';
 		$this->assets_url = esc_url( trailingslashit( plugins_url( '/assets/', $this->file ) ) );
+		$this->medium_editor_url = esc_url( trailingslashit( plugins_url( '/medium-editor/', $this->file ) ) );
 
 		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
@@ -157,7 +160,34 @@ class SmartPen {
 	public function enqueue_styles () {
 		wp_register_style( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'css/frontend.css', array(), $this->_version );
 		wp_enqueue_style( $this->_token . '-frontend' );
+
+		if( is_user_logged_in() && is_single() )
+			$this->enqueue_medium_editor_files();
+
 	} // End enqueue_styles ()
+
+	/**
+	* Load medium-editor styles
+	* @access public
+	* @since 1.0.0
+	* @return void
+	*/
+	public function enqueue_medium_editor_files() {
+		// load css
+		wp_register_style( $this->_token . '-medium-css', esc_url( $this->medium_editor_url ) . 'dist/css/medium-editor.min.css', array(), $this->_version );
+		wp_register_style( $this->_token . '-medium-theme', esc_url( $this->medium_editor_url ) . 'dist/css/themes/default.min.css', array(), $this->_version);
+		wp_register_style( $this->_token . '-medium-custom', esc_url( $this->medium_editor_url ) . 'main.css', array(), $this->_version);
+        
+		wp_enqueue_style( $this->_token . '-medium-css' );
+		wp_enqueue_style( $this->_token . '-medium-theme' );
+		wp_enqueue_style( $this->_token . '-medium-custom' );
+
+		// load scripts
+		wp_register_script( $this->_token . '-medium-js', esc_url( $this->medium_editor_url ) . 'dist/js/medium-editor.min.js', array(), $this->_version );
+        wp_register_script( $this->_token . '-medium-custom-js', esc_url( $this->medium_editor_url ) . 'main.js', array(), $this->_version );
+		wp_enqueue_script( $this->_token . '-medium-js' );
+        wp_enqueue_script( $this->_token . '-medium-custom-js' );
+	}
 
 	/**
 	 * Load frontend Javascript.
