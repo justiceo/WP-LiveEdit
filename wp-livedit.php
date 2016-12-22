@@ -45,3 +45,30 @@ function SmartPen () {
 }
 
 SmartPen();
+
+
+/**
+* Register route for use by importer plugin in fetching url
+* @access public
+* @since 1.0.0
+* @return string
+*/
+add_action( 'rest_api_init', 'register_external_url_fetcher' );
+function register_external_url_fetcher() {
+    register_rest_route( 'smartpen/v2', '/import/(?P<url>\S+)', array(
+        'methods' => 'GET',
+        'callback' => 'fetch_url',
+        'args' => array(
+            'url' => array(
+                'required' => true,
+                'validate_callback' => function($param, $request, $key) {
+                    return filter_var($param, FILTER_VALIDATE_URL);
+                }
+            ),
+        )
+    ) );
+}
+
+function fetch_url( WP_REST_Request $request ) {
+    return wp_remote_get($request->get_param( 'url' ));
+}
