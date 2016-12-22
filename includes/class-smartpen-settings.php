@@ -112,21 +112,29 @@ class SmartPen_Settings {
 			'description'			=> __( 'Enable or Disable features in the front-end editor', 'smartpen' ),
 			'fields'				=> array(
 				array(
-					'id' 			=> 'text_field',
-					'label'			=> __( 'Some Text' , 'smartpen' ),
-					'description'	=> __( 'This is a standard text field.', 'smartpen' ),
+					'id' 			=> 'post_template_title',
+					'label'			=> __( 'Post template title' , 'smartpen' ),
+					'description'	=> __( 'The title of the post used as template', 'smartpen' ),
 					'type'			=> 'text',
 					'default'		=> '',
-					'placeholder'	=> __( 'Placeholder text', 'smartpen' )
+					'placeholder'	=> __( 'Post template title', 'smartpen' )
 				),
 				array(
-					'id' 			=> 'password_field',
-					'label'			=> __( 'A Password' , 'smartpen' ),
-					'description'	=> __( 'This is a standard password field.', 'smartpen' ),
-					'type'			=> 'password',
+					'id' 			=> 'post_template_slug',
+					'label'			=> __( 'Post template slug' , 'smartpen' ),
+					'description'	=> __( 'The url end-point of the post used as template', 'smartpen' ),
+					'type'			=> 'text',
 					'default'		=> '',
-					'placeholder'	=> __( 'Placeholder text', 'smartpen' )
+					'placeholder'	=> __( 'Post template slug', 'smartpen' )
 				),
+				array(
+                    'id' 			=> 'post_template_id',
+                    'label'			=> __( 'Post template id' , 'smartpen' ),
+                    'description'	=> __( 'The id of the post used as template (dont modify)', 'smartpen' ),
+                    'type'			=> 'hidden',
+                    'default'		=> '',
+                    'placeholder'	=> __( 'Post template id', 'smartpen' )
+                ),
 				array(
 					'id' 			=> 'secret_text_field',
 					'label'			=> __( 'Some Secret Text' , 'smartpen' ),
