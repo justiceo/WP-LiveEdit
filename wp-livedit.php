@@ -55,7 +55,7 @@ SmartPen();
 */
 add_action( 'rest_api_init', 'register_external_url_fetcher' );
 function register_external_url_fetcher() {
-    register_rest_route( 'smartpen/v2', '/import/(?P<url>\S+)', array(
+    register_rest_route( 'smartpen', '/import/(?P<url>\S+)', array(
         'methods' => 'GET',
         'callback' => 'fetch_url',
         'args' => array(
@@ -71,4 +71,22 @@ function register_external_url_fetcher() {
 
 function fetch_url( WP_REST_Request $request ) {
     return wp_remote_get($request->get_param( 'url' ));
+}
+
+/**
+* Register custom handler for saving posts
+* @access public
+* @since 1.0.0
+* @return string
+*/
+add_action( 'rest_api_init', 'register_custom_save_handler' );
+function register_custom_save_handler() {
+    register_rest_route( 'smartpen', '/save', array(
+        'methods' => 'POST',
+        'callback' => 'custom_save_handler'
+    ) );
+}
+
+function custom_save_handler( WP_REST_Request $request ) {
+    return serialize($request);
 }
