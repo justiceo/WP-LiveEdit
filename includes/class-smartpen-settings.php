@@ -107,28 +107,28 @@ class SmartPen_Settings {
 	 */
 	private function settings_fields () {
 
-		$settings['standard'] = array(
-			'title'					=> __( 'Available Front-end Features', 'smartpen' ),
-			'description'			=> __( 'Enable or Disable features in the front-end editor', 'smartpen' ),
+		$settings['new_post'] = array(
+			'title'					=> __( 'New Post', 'smartpen' ),
+			'description'			=> __( 'This settings affect the post used as template for creating other posts', 'smartpen' ),
 			'fields'				=> array(
 				array(
-					'id' 			=> 'post_template_title',
+					'id' 			=> 'post_title',
 					'label'			=> __( 'Post template title' , 'smartpen' ),
 					'description'	=> __( 'The title of the post used as template', 'smartpen' ),
 					'type'			=> 'text',
-					'default'		=> '',
+					'default'		=> 'Create a New Post',
 					'placeholder'	=> __( 'Post template title', 'smartpen' )
 				),
 				array(
-					'id' 			=> 'post_template_slug',
+					'id' 			=> 'post_slug',
 					'label'			=> __( 'Post template slug' , 'smartpen' ),
 					'description'	=> __( 'The url end-point of the post used as template', 'smartpen' ),
 					'type'			=> 'text',
-					'default'		=> '',
+					'default'		=> 'new-post',
 					'placeholder'	=> __( 'Post template slug', 'smartpen' )
 				),
 				array(
-                    'id' 			=> 'post_template_id',
+                    'id' 			=> 'post_id',
                     'label'			=> __( 'Post template id' , 'smartpen' ),
                     'description'	=> __( 'The id of the post used as template (dont modify)', 'smartpen' ),
                     'type'			=> 'hidden',
@@ -136,51 +136,28 @@ class SmartPen_Settings {
                     'placeholder'	=> __( 'Post template id', 'smartpen' )
                 ),
 				array(
-					'id' 			=> 'secret_text_field',
-					'label'			=> __( 'Some Secret Text' , 'smartpen' ),
-					'description'	=> __( 'This is a secret text field - any data saved here will not be displayed after the page has reloaded, but it will be saved.', 'smartpen' ),
-					'type'			=> 'text_secret',
-					'default'		=> '',
-					'placeholder'	=> __( 'Placeholder text', 'smartpen' )
+					'id' 			=> 'post_title_class',
+					'label'			=> __( 'Post title class' , 'smartpen' ),
+					'description'	=> __( 'The class of the element surrounding the title', 'smartpen' ),
+					'type'			=> 'text',
+					'default'		=> '.entry-title',
+					'placeholder'	=> __( '.entry-title', 'smartpen' )
 				),
 				array(
-					'id' 			=> 'text_block',
-					'label'			=> __( 'A Text Block' , 'smartpen' ),
-					'description'	=> __( 'This is a standard text area.', 'smartpen' ),
-					'type'			=> 'textarea',
-					'default'		=> '',
-					'placeholder'	=> __( 'Placeholder text for this textarea', 'smartpen' )
+					'id' 			=> 'post_content_class',
+					'label'			=> __( 'Post template slug' , 'smartpen' ),
+					'description'	=> __( 'The class of the element surrounding the content', 'smartpen' ),
+					'type'			=> 'text',
+					'default'		=> '.post-content',
+					'placeholder'	=> __( '.post-content', 'smartpen' )
 				),
 				array(
-					'id' 			=> 'single_checkbox',
-					'label'			=> __( 'An Option', 'smartpen' ),
-					'description'	=> __( 'A standard checkbox - if you save this option as checked then it will store the option as \'on\', otherwise it will be an empty string.', 'smartpen' ),
-					'type'			=> 'checkbox',
-					'default'		=> ''
-				),
-				array(
-					'id' 			=> 'select_box',
-					'label'			=> __( 'A Select Box', 'smartpen' ),
-					'description'	=> __( 'A standard select box.', 'smartpen' ),
-					'type'			=> 'select',
-					'options'		=> array( 'drupal' => 'Drupal', 'joomla' => 'Joomla', 'wordpress' => 'WordPress' ),
-					'default'		=> 'wordpress'
-				),
-				array(
-					'id' 			=> 'radio_buttons',
-					'label'			=> __( 'Some Options', 'smartpen' ),
-					'description'	=> __( 'A standard set of radio buttons.', 'smartpen' ),
+					'id' 			=> 'post_status',
+					'label'			=> __( 'New post status', 'smartpen' ),
+					'description'	=> __( 'The default status of a new post', 'smartpen' ),
 					'type'			=> 'radio',
-					'options'		=> array( 'superman' => 'Superman', 'batman' => 'Batman', 'ironman' => 'Iron Man' ),
-					'default'		=> 'batman'
-				),
-				array(
-					'id' 			=> 'multiple_checkboxes',
-					'label'			=> __( 'Some Items', 'smartpen' ),
-					'description'	=> __( 'You can select multiple items and they will be stored as an array.', 'smartpen' ),
-					'type'			=> 'checkbox_multi',
-					'options'		=> array( 'square' => 'Square', 'circle' => 'Circle', 'rectangle' => 'Rectangle', 'triangle' => 'Triangle' ),
-					'default'		=> array( 'circle', 'triangle' )
+					'options'		=> array( 'publish' => 'Publish', 'draft' => 'Draft', 'pending' => 'Pending Review' ),
+					'default'		=> 'publish'
 				)
 			)
 		);
