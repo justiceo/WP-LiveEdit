@@ -186,6 +186,11 @@ class SmartPen {
 		// load scripts
 		wp_register_script( $this->_token . '-medium-js', esc_url( $this->medium_editor_url ) . 'dist/js/medium-editor.min.js', array(), $this->_version );
         wp_register_script( $this->_token . '-medium-custom-js', esc_url( $this->medium_editor_url ) . 'main.js', array(), $this->_version );
+
+        $translation_array = array(
+                'nonce' => wp_create_nonce( 'wp_rest' )
+        );
+        wp_localize_script( $this->_token . '-medium-custom-js', 'smartpen_object', $translation_array );
 		wp_enqueue_script( $this->_token . '-medium-js' );
         wp_enqueue_script( $this->_token . '-medium-custom-js' );
 	}
