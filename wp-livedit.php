@@ -90,3 +90,28 @@ function register_custom_save_handler() {
 function custom_save_handler( WP_REST_Request $request ) {
     return serialize($request);
 }
+
+/**
+* Register custom handler for returning post settings
+* @access public
+* @since 1.0.0
+* @return string
+*/
+add_action( 'rest_api_init', 'register_get_post_settings' );
+function register_get_post_settings() {
+    register_rest_route( 'smartpen', '/post-settings', array(
+        'methods' => 'GET',
+        'callback' => 'get_post_settings'
+    ) );
+}
+
+// waiting on authentication
+function get_post_settings( WP_REST_Request $request ) {
+    $instance = SmartPen::instance( __FILE__, '1.0.0' );
+
+	if ( is_null( $instance->settings ) ) {
+		$instance->settings = SmartPen_Settings::instance( $instance );
+	}
+
+    return serialize(get_option('smartpen_settings'));
+}
