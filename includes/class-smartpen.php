@@ -177,21 +177,43 @@ class SmartPen {
 		// load css
 		wp_register_style( $this->_token . '-medium-css', esc_url( $this->medium_editor_url ) . 'dist/css/medium-editor.min.css', array(), $this->_version );
 		wp_register_style( $this->_token . '-medium-theme', esc_url( $this->medium_editor_url ) . 'dist/css/themes/default.min.css', array(), $this->_version);
+		wp_register_style( $this->_token . '-medium-insert-frontend', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/dist/css/medium-editor-insert-plugin-frontend.min.css', array(), $this->_version);
+		wp_register_style( $this->_token . '-medium-insert', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/dist/css/medium-editor-insert-plugin.min.css', array(), $this->_version);
 		wp_register_style( $this->_token . '-medium-custom', esc_url( $this->medium_editor_url ) . 'main.css', array(), $this->_version);
         
 		wp_enqueue_style( $this->_token . '-medium-css' );
 		wp_enqueue_style( $this->_token . '-medium-theme' );
+		wp_enqueue_style( $this->_token . '-medium-insert-frontend' );
+		wp_enqueue_style( $this->_token . '-medium-insert' );
 		wp_enqueue_style( $this->_token . '-medium-custom' );
+
+
 
 		// load scripts
 		wp_register_script( $this->_token . '-medium-js', esc_url( $this->medium_editor_url ) . 'dist/js/medium-editor.min.js', array(), $this->_version );
+        wp_register_script( $this->_token . '-medium-insert-plugin-handlebars', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/bower_components/handlebars/handlebars.runtime.min.js', array(), $this->_version );
+        wp_register_script( $this->_token . '-medium-insert-plugin-sortable', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/bower_components/jquery-sortable/source/js/jquery-sortable-min.js', array(), $this->_version );
+        wp_register_script( $this->_token . '-medium-insert-plugin-query', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js', array(), $this->_version );
+        wp_register_script( $this->_token . '-medium-insert-plugin-iframe', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/bower_components/blueimp-file-upload/js/jquery.iframe-transport.js', array(), $this->_version );
+        wp_register_script( $this->_token . '-medium-insert-plugin-fileupload', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/bower_components/blueimp-file-upload/js/jquery.fileupload.js', array(), $this->_version );
+        wp_register_script( $this->_token . '-medium-insert-plugin', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/dist/js/medium-editor-insert-plugin.min.js', array(), $this->_version );
+        wp_register_script( $this->_token . '-medium-autolist-plugin', esc_url( $this->medium_editor_url ) . 'extensions/autolist/dist/autolist.min.js', array(), $this->_version );
         wp_register_script( $this->_token . '-medium-custom-js', esc_url( $this->medium_editor_url ) . 'main.js', array(), $this->_version );
 
         $translation_array = array(
                 'nonce' => wp_create_nonce( 'wp_rest' )
         );
         wp_localize_script( $this->_token . '-medium-custom-js', 'smartpen_object', $translation_array );
+
+
 		wp_enqueue_script( $this->_token . '-medium-js' );
+		wp_enqueue_script( $this->_token . '-medium-insert-plugin-handlebars' );
+		wp_enqueue_script( $this->_token . '-medium-insert-plugin-sortable' );
+		wp_enqueue_script( $this->_token . '-medium-insert-plugin-query' );
+		wp_enqueue_script( $this->_token . '-medium-insert-plugin-iframe' );
+		wp_enqueue_script( $this->_token . '-medium-insert-plugin-fileupload' );
+		wp_enqueue_script( $this->_token . '-medium-insert-plugin' );
+		wp_enqueue_script( $this->_token . '-medium-autolist-plugin' );
         wp_enqueue_script( $this->_token . '-medium-custom-js' );
 	}
 
