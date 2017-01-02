@@ -1,7 +1,16 @@
 /* custom javascript */
 jQuery( document ).ready(function($) {
     console.log( "ready!" );
-    var headerE = new MediumEditor('h2.entry-title');
+    var titleClass = "h2.entry-title";
+    var bodyClass = ".post-content";
+    var editButton = $('<a id="edit-button" class="btn btn-default">Edit</a>');
+    var saveButton = $('<a id="save-post" class="btn btn-default">Save</a>');
+    var cancelButton = $('<a id="cancel-editing" class="btn btn-default">Cancel</a>');
+    var buttonContainer = $('<span class="medium-editor-state-buttons">');
+    buttonContainer.append(editButton).append(saveButton).append(cancelButton);
+    $(titleClass).before(buttonContainer);
+
+    var headerE = new MediumEditor(titleClass);
     var autolist = new AutoList();
 
     var options = {
@@ -14,7 +23,7 @@ jQuery( document ).ready(function($) {
         }
 
     };
-    var editor = new MediumEditor('.post-content', options);
+    var editor = new MediumEditor(bodyClass, options);
     $(function () {
         $('.post-content').mediumInsert({
             editor: editor
