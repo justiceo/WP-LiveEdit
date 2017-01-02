@@ -115,7 +115,55 @@ class SmartPen {
 		// Handle localisation
 		$this->load_plugin_textdomain();
 		add_action( 'init', array( $this, 'load_localisation' ), 0 );
+
+		// Set up new post
+		// this->set_new_post();
+		// $test_post = $this->get_post_by_slug("new-post-tester");
+
 	} // End __construct ()
+
+	/**
+	* Create default post or rest it if it already exists
+	*/
+	public function set_new_post() {
+	    $default_slug = "new-post";
+	    $post = $this->get_post_by_slug($default_slug);
+	    if( null == $post ){
+	        // create post
+	        $super_admins = get_super_admins();
+
+	        $post_id = wp_insert_post(
+	            array(
+	                'comment_status' => 'closed',
+	                'ping_status' => 'closed',
+	                'post_author' => $super_admins[0],
+	                'post_name' => $default_slug,
+	                'post_title' => 'Create a new post',
+	                'post_status' => 'draft',
+	                'post_type' => 'post'
+	            )
+	        );
+	    }
+	    else {
+            $post->post_title = "New Post Template";
+            wp_update_post($post);
+	    }
+	}
+
+	public function get_post_by_slug($slug){
+
+        $query = new WP_Query(
+            array(
+                'post_type' => 'post',
+                'post_status' => 'any'
+            )
+         );
+        if( !$query->have_posts() ) {
+            return null;
+        }
+        $posts = $query->posts;
+        return $posts[0];
+    }
 
 	/**
 	 * Wrapper function to register a new post type
