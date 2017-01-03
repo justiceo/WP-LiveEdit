@@ -13,11 +13,17 @@ jQuery( document ).ready(function($) {
     var titleClass = "h2.entry-title";
     var contentClass = ".post-content";
     var editButton = $('<a id="edit-button" class="btn btn-default">Edit</a>');
-    var saveButton = $('<a id="save-post" class="btn btn-default">Save</a>');
+    var saveButton = $('<a id="save-post" class="btn btn-default">Update Post</a>');
     var savePublishButton = $('<a id="save-publish" class="btn btn-default">Save & Publish</a>');
     var cancelButton = $('<a id="cancel-editing" class="btn btn-default">Cancel</a>');
     var buttonContainer = $('<span class="medium-editor-state-buttons">');
-    buttonContainer.append(editButton).append(saveButton).append(savePublishButton).append(cancelButton);
+    buttonContainer.append(editButton).append(saveButton).append(cancelButton);
+    if(smartpen_object.post.post_status != 'publish') {
+        $(cancelButton).before(savePublishButton);
+    }
+    if(isNewPostPage()) {
+        saveButton.text("Save");
+    }
     $(titleClass).before(buttonContainer);
 
 
@@ -64,7 +70,6 @@ jQuery( document ).ready(function($) {
         var data = {
             title: $(titleClass).text(),
             content: $(contentClass).html(),
-            //date: smartpen_object.site.time,
             status: smartpen_object.post.post_status      // for the new post, this is draft
         };
         // if new post, ignore id
@@ -77,7 +82,6 @@ jQuery( document ).ready(function($) {
         var data = {
             title: $(titleClass).text(),
             content: $(contentClass).html(),
-            //date: smartpen_object.site.time,
             status: 'publish'
         };
         addOrUpdate(data);
@@ -116,7 +120,6 @@ jQuery( document ).ready(function($) {
     }
 
     function isNewPostPage() {
-        // get post id from body of page
-        return window.location.href.includes("new-post");
+        return smartpen_object.post.ID == 466; // todo: hardcoded for now
     }
 });

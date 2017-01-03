@@ -285,6 +285,10 @@ class SmartPen {
         $post = get_post();
         $user = wp_get_current_user();
 
+        // anyone can edit the new post template
+        if ( $post->ID == 466 )  // hardcoded for now
+            return true;
+
         // any author can edit their post
 	    if( $user->ID == $post->post_author)
 	        return true;
