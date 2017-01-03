@@ -249,10 +249,16 @@ class SmartPen {
         wp_register_script( $this->_token . '-medium-custom-js', esc_url( $this->medium_editor_url ) . 'main.js', array(), $this->_version );
 
         $translation_array = array(
-                'nonce' => wp_create_nonce( 'wp_rest' )
+                'nonce' => wp_create_nonce( 'wp_rest' ),
+                'post' => get_post(),
+                'settings' => "",
+                'currentUser' => wp_get_current_user(),
+                'site' => array(
+                    'time' => current_time( $type, $gmt = 0 )
+                )
         );
+        $translation_array = apply_filters( 'smartpen_ui_object', $translation_array );
         wp_localize_script( $this->_token . '-medium-custom-js', 'smartpen_object', $translation_array );
-
 
 		wp_enqueue_script( $this->_token . '-medium-js' );
 		wp_enqueue_script( $this->_token . '-medium-insert-plugin-handlebars' );
