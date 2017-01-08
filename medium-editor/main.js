@@ -23,9 +23,11 @@ jQuery( document ).ready(function($) {
     }
     if(isNewPostPage()) {
         saveButton.text("Save");
+        // title text should be cleared
+        // body content should be cleared
+        // ensure placeholders for the editors are set
     }
     $(titleClass).before(buttonContainer);
-
 
     var autolist = new AutoList();
     var options = {
@@ -87,9 +89,12 @@ jQuery( document ).ready(function($) {
         addOrUpdate(data);
     });
 
+    var beforeSave = [];
     function addOrUpdate(postData, postId) {
         var origin = window.location.protocol + "//" + window.location.hostname;
         var url = origin + "/wp-json/wp/v2/posts/" + postId;
+        beforeSave.forEach(f => f(postData));
+
         $.ajax({
             url: url,
             method: "POST",
@@ -122,4 +127,15 @@ jQuery( document ).ready(function($) {
     function isNewPostPage() {
         return smartpen_object.post.ID == 466; // todo: hardcoded for now
     }
+
+    function removeFavoriteButton( data ) {
+        var content = $('<div/>').html( data.content );
+        var buttons = content.find(".simplefavorite-button");
+        $(buttons).each(function( i, e ) {
+            $(e).parent().remove();
+        });
+        data.content = content.html();
+        //$(".post-content").html(content.html()); // uncomment to preview effect
+    }
+    beforeSave.push(removeFavoriteButton);
 });
