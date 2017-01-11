@@ -3,8 +3,8 @@ WP-LivEdit
 
 A front-end WYSIWYG post editing plugin to improve writing experience for bloggers.
 
-For Development
------------
+For Local Development
+--------------------
 
 - run `npm install` for the project root directory
 - run `npm install` from ./medium-editor/extensions/insert-plugin/
