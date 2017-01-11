@@ -3,8 +3,10 @@ WP-LivEdit
 
 A front-end WYSIWYG post editing plugin to improve writing experience for bloggers.
 
-Development
+For Development
 -----------
-run `npm install` for extensions in ./medium-editor/extensions
-run `bower install` (if there is a bower.json file)
-For local development, you can demo UI functions by opening ./medium-editor/index.html in the browser.
+
+- run `npm install` for the project root directory
+- run `npm install` from ./medium-editor/extensions/insert-plugin/
+- run `bower install` from ./medium-editor/extensions/insert-plugin/
+- open `./medium-editor/index.html` in the browser and it should be editable
