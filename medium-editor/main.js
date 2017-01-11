@@ -30,8 +30,21 @@ jQuery( document ).ready(function($) {
     $(titleClass).before(buttonContainer);
 
     var autolist = new AutoList();
-    var options = {
+    var headerEditorOptions = {
+        disableReturn: true,
+        disableExtraSpaces: true,
+        toolbar: false,
+        placeholder: {
+            text: 'Enter post title',
+            hideOnClick: false
+        }
+    };
+    var contentEditorOptions = {
         buttonLabels: 'fontawesome',
+        placeholder: {
+            text: 'Write your story here',
+            hideOnClick: false
+        },
         extensions: {
             'autolist': autolist
         },
@@ -40,8 +53,8 @@ jQuery( document ).ready(function($) {
         }
 
     };
-    var bodyEditor = new MediumEditor(contentClass, options);
-    var headerEditor = new MediumEditor(titleClass);
+    var bodyEditor = new MediumEditor(contentClass, contentEditorOptions);
+    var headerEditor = new MediumEditor(titleClass, headerEditorOptions);
     $(function () {
         $('.post-content').mediumInsert({
             editor: bodyEditor
