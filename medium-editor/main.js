@@ -12,6 +12,7 @@ jQuery( document ).ready(function($) {
     console.log( "ready!" );
     var titleClass = "h2.entry-title";
     var contentClass = ".post-content";
+    var hideOnNewPostPage = ["#respond", ".simplefavorite-button", ".fusion-meta-info", ".related-posts"];
     var editButton = $('<a id="edit-button" class="btn btn-default">Edit</a>');
     var saveButton = $('<a id="save-post" class="btn btn-default">Update Post</a>');
     var savePublishButton = $('<a id="save-publish" class="btn btn-default">Save & Publish</a>');
@@ -155,6 +156,8 @@ jQuery( document ).ready(function($) {
     beforeSave.push(removeFavoriteButton);
 
     function resetNewPostTemplate() {
+        if(!isNewPostPage()) return;
+        
         // clear the title
         $(titleClass).text("");
 
@@ -162,8 +165,11 @@ jQuery( document ).ready(function($) {
         $(contentClass).text("");
         $(contentClass).height('400px');
 
-        initEditor();
+        // hide all the other unnecessary elements on the page
+        $(hideOnNewPostPage).hide();
 
+        // automatic init editor if not already initialized
+        initEditor();
     }
     resetNewPostTemplate();
 });
