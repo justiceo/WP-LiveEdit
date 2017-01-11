@@ -61,25 +61,16 @@ jQuery( document ).ready(function($) {
         });
     });
     var cssLink = document.getElementById('medium-editor-theme');
+    var beforeSave = [];
 
     // no editing at start unless specified in url
     $("#edit-button").hide();
     if(getURLParameter("init-editor") != "true") {
-        $("#cancel-editing, #save-post, #save-publish, #edit-button").toggle();
-        bodyEditor.destroy();
-        headerEditor.destroy();
+        disableEditor();
     }
 
-    $("#edit-button").click(function() {
-        bodyEditor.setup();
-        headerEditor.setup();
-        $("#cancel-editing, #save-post, #save-publish, #edit-button").toggle();
-    });
-    $("#cancel-editing").click(function() {
-        bodyEditor.destroy();
-        headerEditor.destroy();
-        $("#cancel-editing, #save-post, #save-publish, #edit-button").toggle();
-    });
+    $("#edit-button").click( initEditor );
+    $("#cancel-editing").click( disableEditor );
 
     $("#save-post").click(function() {
         var data = {
@@ -102,7 +93,18 @@ jQuery( document ).ready(function($) {
         addOrUpdate(data);
     });
 
-    var beforeSave = [];
+    function initEditor() {
+        bodyEditor.setup();
+        headerEditor.setup();
+        $("#cancel-editing, #save-post, #save-publish, #edit-button").toggle();
+    }
+
+    function disableEditor() {
+        $("#cancel-editing, #save-post, #save-publish, #edit-button").toggle();
+        bodyEditor.destroy();
+        headerEditor.destroy();
+    }
+
     function addOrUpdate(postData, postId) {
         var origin = window.location.protocol + "//" + window.location.hostname;
         var url = origin + "/wp-json/wp/v2/posts/" + postId;
@@ -151,4 +153,17 @@ jQuery( document ).ready(function($) {
         //$(".post-content").html(content.html()); // uncomment to preview effect
     }
     beforeSave.push(removeFavoriteButton);
+
+    function resetNewPostTemplate() {
+        // clear the title
+        $(titleClass).text("");
+
+        // clear everything in the body and set min-height
+        $(contentClass).text("");
+        $(contentClass).height('400px');
+
+        initEditor();
+
+    }
+    resetNewPostTemplate();
 });
