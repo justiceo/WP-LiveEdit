@@ -1,0 +1,27 @@
+*:focus {
+    outline: none;
+}
+
+.editable,
+.secondEditable
+ {
+    outline: none;
+    margin: 0 0 20px 0;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.medium-editor-state-buttons {
+    display: inline-block;
+    float:right;
+}
+
+.medium-editor-state-buttons .btn.btn-default {
+    padding: 5px 9px;
+    background: transparent;
+    border: 1px solid #999;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 75%;
+    margin-right: 10px;
+}
