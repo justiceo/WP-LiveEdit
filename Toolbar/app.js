@@ -116,6 +116,8 @@ angular.module('le', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ui
             setToolbarButtons(toolbar.default_visible);
         }
 
+        // with this setup, a user would have to either save content or cancel if they want to see just the help page.
+        // proposition: add and disable the cancel and save buttons
         function setToolbarButtons(buttons) {
             buttons = buttons || [];
             toolbar.visible_buttons = [];
