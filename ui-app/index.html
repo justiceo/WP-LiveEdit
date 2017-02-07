@@ -24,8 +24,9 @@
     <script src="app.js"></script>
     <script src="revisions.js"></script>
     <script src="help.js"></script>
-    <script src="settings.js"></script>    
-    
+    <script src="settings.js"></script>
+    <script src="toolbar.service.js"></script>
+
     <!-- medium editor (removing the below css removes the invisible white space above body, reason i have no idea) --> 
     <link rel="stylesheet" href="editor/main.css" />
     <link rel="stylesheet" href="editor/dist/css/medium-editor.min.css" />
@@ -46,18 +47,7 @@
             <p>Ours was the marsh country, down by the river, within, as the river wound, twenty miles of the sea. My first most vivid and broad impression of the identity of things seems to me to have been gained on a memorable raw afternoon towards evening. At such a time I found out for certain that this bleak place overgrown with nettles was the churchyard; and that Philip Pirrip, late of this parish, and also Georgiana wife of the above, were dead and buried; and that Alexander, Bartholomew, Abraham, Tobias, and Roger, infant children of the aforesaid, were also dead and buried; and that the dark flat wilderness beyond the churchyard, intersected with dikes and mounds and gates, with scattered cattle feeding on it, was the marshes; and that the low leaden line beyond was the river; and that the distant savage lair from which the wind was rushing was the sea; and that the small bundle of shivers growing afraid of it all and beginning to cry, was Pip.</p>
         </div>
     </div>
-    <ul id="le_toolbar" class="toolbar" ng-controller="ToolbarCtrl as $ctrl">
-        <li ng-repeat="button in $ctrl.visible_buttons" 
-			data-id="button.id" 
-			uib-tooltip="{{ button.title }}"
-			tooltip-placement="top"
-			tooltip-class="le-tooltip"
-			tooltip-popup-delay="800"
-			tooltip-popup-close-delay="100"
-			>
-            <a href="#" ng-click="button.handler()"><i ng-class="[button.icon, button.id]"></i></a>
-        </li>
-    </ul>
+    <le-toolbar></le-toolbar>
     
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="editor/dist/js/medium-editor.js"></script>
