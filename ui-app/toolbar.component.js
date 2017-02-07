@@ -5,7 +5,7 @@ angular.module('le', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ui
     .controller('ToolbarCtrl', function($uibModal, $uibTooltip, $mdDialog, ToolbarService) {
         var toolbar = this;
         toolbar.$uibModal = $uibModal;
-        console.log("toolbar service nooop: ", ToolbarService);
+        console.log("toolbar service nooop: ", ToolbarService.noop());
         toolbar.buttons = [
             {
                 id: 'le_edit',
