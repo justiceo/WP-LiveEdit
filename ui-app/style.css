@@ -6,12 +6,24 @@ body {
 /*--------------------------------------------------------------
 1.0 - TOOLBAR
 --------------------------------------------------------------*/
-.toolbar {
-  left:50%;
-	margin: 0 0 0 -140px;
-  position:fixed;
-  bottom: 50px;
+
+.toolbar-wrapper.bottom {
+	left:35%;
+	bottom: 150px;
+	position:fixed;
+	width:100%;
+}
+
+.toolbar-wrapper.left {
+	left:100px;
+	top: 100px;
+	position:fixed;
 	width:auto;
+}
+.toolbar {
+	position: absolute;
+	width:auto;
+	overflow: visible;
 	border-radius: 4px;
 	box-shadow: 0 0 3px rgba(64,100,138,.3), 0 2px 4px #3b5c7f, 0 12px 18px rgba(64,100,138,.4);
 	padding-left: 0;	

@@ -1,3 +1,4 @@
+<div ng-class="[$ctrl.placement, 'toolbar-wrapper']">
 <ul id="le_toolbar" class="toolbar">
         <li ng-repeat="button in $ctrl.buttons track by $index"
             data-id="{{ button.id }}"
@@ -13,6 +14,7 @@
                 </a>
         </li>
 </ul>
+</div>
 <div style=" display:none !important; visibility: hidden !important;">
 <editor></editor>
 <post-revisions></post-revisions>
