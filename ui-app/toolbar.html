@@ -1,6 +1,6 @@
-<ul id="le_toolbar" class="toolbar" ng-controller="ToolbarCtrl as $ctrl">
+<ul id="le_toolbar" class="toolbar">
         <li ng-repeat="button in $ctrl.buttons"
-            data-id="button.id"
+            data-id="{{ button.id }}"
             uib-tooltip="{{ button.title }}"
             tooltip-placement="top"
             tooltip-class="le-tooltip"
@@ -11,3 +11,11 @@
                 <a href="#" ng-click="button.handler()" ng-disabled="button.disabled"><i ng-class="[button.icon, button.id]"></i></a>
         </li>
 </ul>
+<div style=" display:none !important; visibility: hidden !important;">
+<editor></editor>
+<post-revisions></post-revisions>
+<post-settings></post-settings>
+<le-help></le-help>
+<new-post></new-post>
+
+</div>

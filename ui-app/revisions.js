@@ -24,13 +24,13 @@ angular.module('le').component('postRevisions', {
 					id: 'le_save',
 					title: 'Save',
 					icon: 'icon-check',
-					handler: noop
+					handler: cancelHandler
 				},
 				{
 					id: 'le_publish',
 					title: 'Publish',
 					icon: 'icon-cursor',
-					handler: noop
+					handler: cancelHandler
 				},
 				{
 					id: 'le_cancel',
@@ -59,7 +59,7 @@ angular.module('le').component('postRevisions', {
 			revisionsButton.disable = true;
         }
 		
-		function closeHandler() {
+		function cancelHandler() {
 			revisionsButton.disable = false;
 			actionButtons.forEach(function(b) {
 				ToolbarService.remove(b.id);

@@ -3,7 +3,8 @@
  */
 angular.module('le', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ui.bootstrap'])
     .controller('ToolbarCtrl', function($uibModal, $uibTooltip, $mdDialog, ToolbarService) {
-        var toolbar = this;       
+        var toolbar = this;
+
 		toolbar.buttons = ToolbarService.getButtons();
 		console.log("toolbar buttons: ", toolbar.buttons);
 

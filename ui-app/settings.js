@@ -5,16 +5,14 @@ angular.module('le').component('postSettings', {
     // this controller will extend ModalController and can access $ctrl.dismiss and $ctrl.ok
     // see: https://angular-ui.github.io/bootstrap/#!#modal
     controller: function SettingsCtrl($mdDialog, ToolbarService) {
-				
-		$onInit = function() {			
-			var settingsButton = {
-					id: 'le_settings',
-					title: 'Settings',
-					icon: 'icon-settings',
-					handler: settingsHandler
-				};
-			ToolbarService.add(settingsButton);
-		}
+
+        var settingsButton = {
+            id: 'le_settings',
+            title: 'Settings',
+            icon: 'icon-settings',
+            handler: settingsHandler
+        };
+        ToolbarService.add(settingsButton);
 		
 		
         function settingsHandler() {

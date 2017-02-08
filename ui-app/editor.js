@@ -1,5 +1,9 @@
 
 angular.module('le')
+	.component('editor', {
+		template: 'hello world',
+		controller: 'EditorCtrl'
+	})
 .controller('EditorCtrl', function($mdDialog, ToolbarService) {
         var button = {
                 id: 'le_edit',

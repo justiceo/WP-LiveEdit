@@ -3,16 +3,13 @@ angular.module('le').component('newPost', {
     //template: '<p style="color:red">hello revisions </p>',
 	templateUrl: 'new-post.html',
     controller: function NewPostCtrl($mdDialog, ToolbarService) {
-				
-		$onInit = function() {			
-			var button = {
-					id: 'le_new_post',
-					title: 'New Post',
-					icon: 'icon-pencil',
-					handler: newPostHandler
-				};
-			ToolbarService.add(button);
-		}
+        var button = {
+            id: 'le_new_post',
+            title: 'New Post',
+            icon: 'icon-pencil',
+            handler: newPostHandler
+        };
+        ToolbarService.add(button);
 		
 		
         function newPostHandler() {
