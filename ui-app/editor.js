@@ -35,6 +35,7 @@ angular.module('le')
 			]
 		
 		function editHandler() {
+			console.log("editor init clicked");
             // enable edit mode
             // todo: medium editor here
 			actionButtons.forEach(function(b) {
@@ -52,6 +53,7 @@ angular.module('le')
 		}
 				
 		function cancelHandler() {
+			console.log("editor cancel clicked");
 			button.disable = false;
 			actionButtons.forEach(function(b) {
 				ToolbarService.remove(b.id);

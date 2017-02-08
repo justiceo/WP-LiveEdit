@@ -21,19 +21,19 @@ angular.module('le').component('postRevisions', {
 		
 		var actionButtons = [
 				{
-					id: 'le_save',
+					id: 'le_revisions_save',
 					title: 'Save',
 					icon: 'icon-check',
 					handler: cancelHandler
 				},
 				{
-					id: 'le_publish',
+					id: 'le_revisions_publish',
 					title: 'Publish',
 					icon: 'icon-cursor',
 					handler: cancelHandler
 				},
 				{
-					id: 'le_cancel',
+					id: 'le_revisions_cancel',
 					title: 'Cancel',
 					icon: 'icon-close',
 					handler: cancelHandler

@@ -2,7 +2,7 @@
  * Created by Justice on 2/7/2017.
  */
 angular.module('le')
-    .factory('ToolbarService', ['$http', '$log', function($http, $log) {
+    .factory('ToolbarService', ['$rootScope', '$http', '$log', function($rootScope, $http, $log) {
         var service = {};
 		var buttons = [];
 
@@ -38,12 +38,16 @@ angular.module('le')
 					return 1;
 				else return 0;
 			});
-			
+
+			$rootScope.$broadcast("le-collection-changed");
+
 			// todo: change this to use a single loop insert. above is inefficient
 		}
 		
 		service.remove = function(buttonId) {
+			console.log("TbService: remove button by id - ", buttonId);
 			buttons.filter(function(b) { b.id != buttonId;});
+			$rootScope.$broadcast("le-collection-changed");
 		}		
 		
         return service;
