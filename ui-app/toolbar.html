@@ -1,12 +1,13 @@
 <ul id="le_toolbar" class="toolbar" ng-controller="ToolbarCtrl as $ctrl">
-        <li ng-repeat="button in $ctrl.visible_buttons"
+        <li ng-repeat="button in $ctrl.buttons"
             data-id="button.id"
             uib-tooltip="{{ button.title }}"
             tooltip-placement="top"
             tooltip-class="le-tooltip"
             tooltip-popup-delay="800"
             tooltip-popup-close-delay="100"
+			ng-class="button.class"
         >
-                <a href="#" ng-click="button.handler()"><i ng-class="[button.icon, button.id]"></i></a>
+                <a href="#" ng-click="button.handler()" ng-disabled="button.disabled"><i ng-class="[button.icon, button.id]"></i></a>
         </li>
 </ul>
