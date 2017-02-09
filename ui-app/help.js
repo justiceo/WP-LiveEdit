@@ -9,6 +9,7 @@ angular.module('le').component('leHelp', {
                 id: 'le_help',
                 title: 'Help',
                 icon: 'icon-question',
+				position: 5,
                 handler: helpHandler
             };
 		ToolbarService.add(helpButton);

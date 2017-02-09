@@ -7,6 +7,7 @@ angular.module('le').component('newPost', {
             id: 'le_new_post',
             title: 'New Post',
             icon: 'icon-pencil',
+			position: 2,
             handler: newPostHandler
         };
         ToolbarService.add(button);

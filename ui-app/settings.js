@@ -10,6 +10,7 @@ angular.module('le').component('postSettings', {
             id: 'le_settings',
             title: 'Settings',
             icon: 'icon-settings',
+			position: 4,
             handler: settingsHandler
         };
         ToolbarService.add(settingsButton);

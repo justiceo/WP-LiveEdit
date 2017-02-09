@@ -15,6 +15,7 @@ angular.module('le').component('postRevisions', {
                 title: 'Revisions',
                 icon: 'icon-clock',
 				disabled: false,
+				position: 3,
                 handler: revisionsHandler
             };
 		ToolbarService.add(revisionsButton);
@@ -62,7 +63,7 @@ angular.module('le').component('postRevisions', {
 		function cancelHandler() {
 			revisionsButton.disable = false;
 			actionButtons.forEach(function(b) {
-				ToolbarService.remove(b.id);
+				ToolbarService.remove(b);
 			});
 		}
     }

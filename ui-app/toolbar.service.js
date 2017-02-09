@@ -44,10 +44,16 @@ angular.module('le')
 			// todo: change this to use a single loop insert. above is inefficient
 		}
 		
-		service.remove = function(buttonId) {
-			console.log("TbService: remove button by id - ", buttonId);
-			buttons.filter(function(b) { b.id != buttonId;});
-			$rootScope.$broadcast("le-collection-changed");
+		service.remove = function(button) {
+			console.log("TbService: remove button ", button.title);
+			var index = buttons.indexOf(button);
+			if(index > -1) {
+				buttons.splice(index, 1);
+				$rootScope.$broadcast("le-collection-changed");
+			}
+			else {
+				console.log(button.title, " not found");
+			}
 		}		
 		
         return service;

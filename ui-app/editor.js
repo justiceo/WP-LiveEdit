@@ -9,6 +9,7 @@ angular.module('le')
                 id: 'le_edit',
                 title: 'Edit',
                 icon: 'icon-note',
+				position: 1,
                 handler: editHandler
             };
 		ToolbarService.add(button);
@@ -56,7 +57,7 @@ angular.module('le')
 			console.log("editor cancel clicked");
 			button.disable = false;
 			actionButtons.forEach(function(b) {
-				ToolbarService.remove(b.id);
+				ToolbarService.remove(b);
 			});
 		}
 });
