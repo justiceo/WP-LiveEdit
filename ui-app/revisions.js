@@ -7,7 +7,7 @@ angular.module('le').component('postRevisions', {
 	templateUrl: 'revisions.html',
     // this controller will extend ModalController and can access $ctrl.dismiss and $ctrl.ok
     // see: https://angular-ui.github.io/bootstrap/#!#modal
-    controller: function RevisionsCtrl($mdDialog, ToolbarService) {
+    controller: function RevisionsCtrl($mdDialog, ToolbarService, DataService) {
         
 		
 		var revisionsButton = {
@@ -58,6 +58,7 @@ angular.module('le').component('postRevisions', {
 				ToolbarService.add(b);
 			});
 			revisionsButton.disable = true;
+			loadPostRevisions();
         }
 		
 		function cancelHandler() {
@@ -65,6 +66,19 @@ angular.module('le').component('postRevisions', {
 			actionButtons.forEach(function(b) {
 				ToolbarService.remove(b);
 			});
+		}
+		
+		var revisions = [];
+		function loadPostRevisions() {
+			DataService.getPostRevisions().then(
+				function(revisions) {
+					console.log("revisions: ", revisions );
+					revisions = revisions;
+				},
+				function (error) {
+					console.log("RevisionsCtrl: Error loading revisions", error);					
+				}
+			);
 		}
     }
 });
