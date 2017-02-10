@@ -1,4 +1,3 @@
-
 angular.module('le')
     .component('leHelp', {
         templateUrl: 'help/help.html',
