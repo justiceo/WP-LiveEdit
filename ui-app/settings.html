@@ -1,38 +1,37 @@
-<div layout="row" ng-cloak="" style="height: 300px" class="dialogdemoOpenFromCloseTo">
-  <style>
-      .edgePadding {
-        padding-left: 25px;
-        padding-right: 25px;
-      }
-
-  </style>
-
-  <div layout="column" layout-align="center center" style="background-color: #f2f2f2" class="md-padding">
-    <span id="left">left</span>
-  </div>
-
-  <div layout="column" layout-align="center start" layout-padding="" flex="">
-    <p class="inset">
-      A dialog can specify its origin and target with <code>openFrom</code> and
-      <code>closeTo</code> properties.
-
-      The options showFrom and closeTo can be specified as a string [where internally
-      querySelector( ) is used to perform the DOM element lookup],
-      element or an Rect object [with top, left, width, height fields].
-    </p>
-
-    <div class="dialog-demo-content" layout="column" layout-align="center center" style="width:100%">
-      <md-button class="md-primary md-raised edgePadding" ng-click="openFromLeft()">
-        Open From Left - Close To Right
-      </md-button>
-      <md-button class="md-primary md-raised edgePadding" ng-click="openOffscreen()">
-        Open From Top Left - Close Slide Down
-      </md-button>
+<div  layout="row" ng-cloak>
+  <md-content class="md-padding" layout="column">
+	<md-input-container>
+    <label>Last Name</label>
+    <input name="lastName" ng-model="lastName" required md-maxlength="10" minlength="4">
+    <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
+      <div ng-message="required">This is required!</div>
+      <div ng-message="md-maxlength">That's too long!</div>
+      <div ng-message="minlength">That's too short!</div>
     </div>
+  </md-input-container>
+	
+    <label>Post Categories</label>
+    <md-chips
+        ng-model="$ctrl.categories"
+		md-max-chips="5"
+        placeholder="Enter a category then press Enter"
+        delete-button-label="Remove Category"
+        delete-hint="Press delete to remove category"
+        secondary-placeholder="+Category">
+		</md-chips>
+	<br>
+	
+    <label>Post Tags</label>
+	<md-chips
+        ng-model="$ctrl.tags"
+		md-max-chips="10"
+        placeholder="Enter a tag then press Enter"
+        delete-button-label="Remove Tag"
+        delete-hint="Press delete to remove tag"
+        secondary-placeholder="+Tag">
+		</md-chips>
 
-  </div>
-
-  <div layout="column" layout-align="center center" style="background-color: #f2f2f2" class="md-padding">
-    <span id="right">right</span>
-  </div>
+    <br/>
+  </md-content>
 </div>
+

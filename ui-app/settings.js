@@ -34,10 +34,13 @@ angular.module('le')
 	var postSettings = {
 		allCategories: [],	// all categories on the site (used for autocomplete)
 		allTags: [], 		// all available tags on the site (for autocomplete)
-		post: {},			// the actual post object for the current post
+		post: {
+			tags: [],
+			categories: []
+		},			// the actual post object for the current post
 		postId:	0			// makes the variable more accessible
 		
-	};		
+	};
 	
 	function loadPostSettings() {			
 		DataService.getAllCategories().then(
