@@ -1,7 +1,7 @@
 
 angular.module('le')
 .component('postSettings', {
-	templateUrl: 'settings.html',
+	templateUrl: 'settings/settings.html',
     controller: 'SettingsCtrl'	
 })
 .controller('SettingsCtrl', function($mdDialog, ToolbarService, DataService) {

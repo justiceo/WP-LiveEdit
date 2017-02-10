@@ -18,7 +18,7 @@ angular.module('le', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ui
         };
     })
     .component('leToolbar', {
-        templateUrl: 'toolbar.html',
+        templateUrl: 'toolbar/toolbar.html',
         controller: 'ToolbarCtrl',
         controllerAs: '$ctrl',
         bindings: {

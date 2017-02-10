@@ -1,9 +1,11 @@
 
-angular.module('le').component('leHelp', {
-	templateUrl: 'help.html',
-    // this controller will extend ModalController and can access $ctrl.dismiss and $ctrl.ok
-    // see: https://angular-ui.github.io/bootstrap/#!#modal
-    controller: function HelpCtrl($mdDialog, ToolbarService) {
+angular.module('le')
+    .component('leHelp', {
+        templateUrl: 'help/help.html',
+        controller: 'HelpCtrl'
+    })
+    .controller('HelpCtrl', function ($mdDialog, ToolbarService) {
+        var ctrl = this;
         var helpButton = {
                 id: 'le_help',
                 title: 'Help',
@@ -12,11 +14,15 @@ angular.module('le').component('leHelp', {
                 handler: helpHandler
             };
 		ToolbarService.add(helpButton);
+
+        console.log(ctrl);
 		
-		
+		var text = "hello again";
+        ctrl.text = "again and again";
+
         function helpHandler() {
             // open the modal 
-            $mdDialog.show({
+           $mdDialog.show({
               template: '<le-help>',
               parent: angular.element(document.body),
               clickOutsideToClose:true,
@@ -25,5 +31,9 @@ angular.module('le').component('leHelp', {
               fullscreen: true // Only for -xs, -sm breakpoints.
             });
         }
-    }
-});
+
+        ctrl.cancel = function() {
+            console.log("HelpCtrl: cancel click");
+            dismiss();
+        }
+    });

@@ -1,5 +1,5 @@
 angular.module('le').component('newPost', {
-    templateUrl: 'new-post.html',
+    templateUrl: 'new-post/new-post.html',
     controller: function NewPostCtrl($mdDialog, ToolbarService) {
         var button = {
             id: 'le_new_post',
