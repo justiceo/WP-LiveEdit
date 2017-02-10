@@ -54,7 +54,9 @@ angular.module('le').component('postRevisions', {
               fullscreen: true // Only for -xs, -sm breakpoints.
             });
             var rev_buttons = ["le_revisions", "le_save", "le_publish", "le_cancel"];
+			var length = ToolbarService.getButtons().length;
 			actionButtons.forEach(function(b) {
+				b.position = ++length;
 				ToolbarService.add(b);
 			});
 			revisionsButton.disable = true;

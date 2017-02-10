@@ -39,7 +39,9 @@ angular.module('le')
 			console.log("editor init clicked");
             // enable edit mode
             // todo: medium editor here
+			var length = ToolbarService.getButtons().length;
 			actionButtons.forEach(function(b) {
+				b.position = ++length;
 				ToolbarService.add(b);
 			});
 			button.disable = true;
