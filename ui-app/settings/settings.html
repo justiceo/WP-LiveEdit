@@ -1,37 +1,42 @@
-<div layout="row" ng-cloak>
-    <md-content class="md-padding" layout="column">
-        <md-input-container>
-            <label>Last Name</label>
-            <input name="lastName" ng-model="lastName" required md-maxlength="10" minlength="4">
-            <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
-                <div ng-message="required">This is required!</div>
-                <div ng-message="md-maxlength">That's too long!</div>
-                <div ng-message="minlength">That's too short!</div>
-            </div>
-        </md-input-container>
+<div ng-cloak="" layout="column">
+    <md-toolbar class="md-accent _md _md-toolbar-transitions">
+        <div class="md-toolbar-tools">
+            <h2 flex md-truncate>Settings</h2>
 
-        <label>Post Categories</label>
-        <md-chips
-                ng-model="$ctrl.categories"
-                md-max-chips="5"
-                placeholder="Enter a category then press Enter"
-                delete-button-label="Remove Category"
-                delete-hint="Press delete to remove category"
-                secondary-placeholder="+Category">
-        </md-chips>
-        <br>
+            <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"/>
+            </md-button>
+        </div>
+    </md-toolbar>
 
-        <label>Post Tags</label>
-        <md-chips
-                ng-model="$ctrl.tags"
-                md-max-chips="10"
-                placeholder="Enter a tag then press Enter"
-                delete-button-label="Remove Tag"
-                delete-hint="Press delete to remove tag"
-                secondary-placeholder="+Tag">
-        </md-chips>
-
-        <br/>
+    <md-content md-theme="docs-dark" layout-gt-sm="column" layout-padding>
+        <div layout="column" style="min-width:600px">
+            <md-input-container>
+                <label>Post Categories</label>
+                <md-chips
+                        ng-model="$ctrl.categories"
+                        placeholder="Enter a category then press Enter"
+                        delete-button-label="Remove Category"
+                        delete-hint="Press delete to remove category"
+                        secondary-placeholder="+Category">
+                </md-chips>
+            </md-input-container>
+            <md-input-container>
+                <label>Post Tags</label>
+                <md-chips
+                        ng-model="$ctrl.tags"
+                        md-max-chips="10"
+                        placeholder="Enter a tag then press Entersd"
+                        delete-button-label="Remove Tag"
+                        delete-hint="Press delete to remove tag"
+                        secondary-placeholder="+Tag">
+                </md-chips>
+            </md-input-container>
+        </div>
+        <div layout="row" layout-align="end end">
+            <md-button class="md-raised">More Options</md-button>
+            <md-button class="md-raised md-primary">Create Post</md-button>
+        </div>
     </md-content>
 </div>
 

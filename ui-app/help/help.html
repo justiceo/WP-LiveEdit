@@ -12,7 +12,7 @@
         <md-tabs md-dynamic-height="" md-border-bottom="">
             <md-tab label="one">
                 <md-content class="md-padding">
-                    <h1 class="md-display-2">Tab One</h1>
+                    <h3>Tab One</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus
                         volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium
                         ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
@@ -20,8 +20,9 @@
             </md-tab>
             <md-tab label="two">
                 <md-content class="md-padding">
-                    <h1 class="md-display-2">Tab Two</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus
+                    <h3>Tab Two</h3>
+                    <md-button ng-click="$ctrl.postOpen = !$ctrl.postOpen" class="md-raised md-block" flex="grow">Button</md-button>
+                    <p ng-if="$ctrl.postOpen">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus
                         volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium
                         ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam
                         erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor

@@ -2,7 +2,8 @@
 angular.module('le')
 .component('postSettings', {
 	templateUrl: 'settings/settings.html',
-    controller: 'SettingsCtrl'	
+    controller: 'SettingsCtrl',
+	controllerAs: '$ctrl'
 })
 .controller('SettingsCtrl', function($mdDialog, ToolbarService, DataService) {
 
@@ -41,6 +42,9 @@ angular.module('le')
 		postId:	0			// makes the variable more accessible
 		
 	};
+	
+	this.categories = [];
+	this.tags = [];
 	
 	function loadPostSettings() {			
 		DataService.getAllCategories().then(
