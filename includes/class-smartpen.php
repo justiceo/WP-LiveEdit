@@ -244,7 +244,7 @@ class SmartPen {
         wp_register_script( $this->_token . '-medium-insert-plugin-query', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js', array(), $this->_version );
         wp_register_script( $this->_token . '-medium-insert-plugin-iframe', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/bower_components/blueimp-file-upload/js/jquery.iframe-transport.js', array(), $this->_version );
         wp_register_script( $this->_token . '-medium-insert-plugin-fileupload', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/bower_components/blueimp-file-upload/js/jquery.fileupload.js', array(), $this->_version );
-        wp_register_script( $this->_token . '-medium-insert-plugin', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/dist/js/medium-editor-insert-plugin.min.js', array(), $this->_version );
+        wp_register_script( $this->_token . '-medium-insert-plugin', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/dist/js/medium-editor-insert-plugin.js', array(), $this->_version );
         wp_register_script( $this->_token . '-medium-autolist-plugin', esc_url( $this->medium_editor_url ) . 'extensions/autolist/dist/autolist.min.js', array(), $this->_version );
         wp_register_script( $this->_token . '-medium-custom-js', esc_url( $this->medium_editor_url ) . 'main.js', array(), $this->_version );
 
@@ -254,7 +254,7 @@ class SmartPen {
                 'settings' => "",
                 'currentUser' => wp_get_current_user(),
                 'site' => array(
-                    'time' => current_time( $type, $gmt = 0 )
+                    'time' => current_time( "mysql", 1 )
                 )
         );
         $translation_array = apply_filters( 'smartpen_ui_object', $translation_array );
