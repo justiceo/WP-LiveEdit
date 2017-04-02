@@ -17,8 +17,9 @@ jQuery( document ).ready(function($) {
     var saveButton = $('<a id="save-post" class="btn btn-default">Update Post</a>');
     var savePublishButton = $('<a id="save-publish" class="btn btn-default">Save & Publish</a>');
     var cancelButton = $('<a id="cancel-editing" class="btn btn-default">Cancel</a>');
+    var refreshButton = $('<a id="refresh-button" class="btn btn-default">Refresh</a>');
     var buttonContainer = $('<span class="medium-editor-state-buttons">');
-    buttonContainer.append(editButton).append(saveButton).append(cancelButton);
+    buttonContainer.append(editButton).append(saveButton).append(cancelButton).append(refreshButton);
     if(smartpen_object.post.post_status != 'publish') {
         $(cancelButton).before(savePublishButton);
     }
@@ -92,23 +93,29 @@ jQuery( document ).ready(function($) {
             status: 'publish'
         };
         addOrUpdate(data);
+        $("#save-publish").hide();
     });
+
+    $("#refresh-button").click(function(){
+        refresh();
+    })
 
     function initEditor() {
         bodyEditor.setup();
         headerEditor.setup();
-        $("#cancel-editing, #save-post, #save-publish, #edit-button").toggle();
+        $("#cancel-editing, #save-post, #save-publish, #refresh-button, #edit-button").toggle();
     }
 
     function disableEditor() {
-        $("#cancel-editing, #save-post, #save-publish, #edit-button").toggle();
+        $("#cancel-editing, #save-post, #save-publish, #refresh-button, #edit-button").toggle();
         bodyEditor.destroy();
         headerEditor.destroy();
     }
 
     function addOrUpdate(postData, postId) {
         var origin = window.location.protocol + "//" + window.location.hostname;
-        var url = origin + "/wp-json/wp/v2/posts/" + postId;
+        var url = origin + "/wp-json/wp/v2/posts/";
+        if(postId) url = url + postId;
         beforeSave.forEach(f => f(postData));
 
         $.ajax({
@@ -123,17 +130,28 @@ jQuery( document ).ready(function($) {
             // it was successful, take us there please!
 
             if(isNewPostPage()) { // redirect to newly created post
-                window.location.replace(response.link + "?init-editor=true");
+                //window.location.replace(response.link + "?init-editor=true");
             }
             else if(getURLParameter("init-editor") != "true") {
                 var href = window.location.href; // if it contains a query, add this to it
                 var editUrl = href.includes("?") ? href + "&init-editor=true" : href + "/?init-editor=true";
-                window.location.replace(editUrl);
+                //window.location.replace(editUrl);
             }
             else { // it's just an update, so reload current page
-                window.location.reload();
+                //window.location.reload();
             }
         });
+    }
+
+    function refresh() {
+        // preserve edit mode on reload
+        if(getURLParameter("init-editor") != "true") {
+                var href = window.location.href; // if it contains a query, add this to it
+                var editUrl = href.includes("?") ? href + "&init-editor=true" : href + "/?init-editor=true";
+                window.location.replace(editUrl);
+        }
+        else
+            window.location.reload();
     }
 
     function getURLParameter(name) {
