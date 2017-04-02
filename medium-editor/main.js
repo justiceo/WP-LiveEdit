@@ -77,7 +77,7 @@ jQuery( document ).ready(function($) {
     $("#save-post").click(function() {
         var data = {
             title: $(titleClass).text(),
-            content: $(contentClass).html(),
+            content: processContent(),
             status: smartpen_object.post.post_status      // for the new post, this is draft
         };
         // if new post, ignore id
@@ -89,7 +89,7 @@ jQuery( document ).ready(function($) {
     $("#save-publish").click(function(){
         var data = {
             title: $(titleClass).text(),
-            content: $(contentClass).html(),
+            content: processContent(),
             status: 'publish'
         };
         addOrUpdate(data);
@@ -141,6 +141,37 @@ jQuery( document ).ready(function($) {
                 //window.location.reload();
             }
         });
+    }
+
+    function uploadImageToServer(imageBlog) {
+        console.log("image: ", postData);
+        var origin = window.location.protocol + "//" + window.location.hostname;
+        var url = origin + "/wp-json/wp/v2/media/";
+
+        $.ajax({
+            url: url,
+            method: "POST",
+            data: postData,
+            beforeSend: function ( xhr ) {
+                xhr.setRequestHeader( 'X-WP-Nonce', smartpen_object.nonce );
+            }
+        }).then(function(response){
+            console.log(response);
+            // it was successful, take us there please!
+        });
+    }
+
+    function processContent() {
+        $(".likebtn_container").remove();
+        //uploadImages();
+        return $(contentClass).html();
+    }
+
+    function uploadImages() {
+        $(contentClass).find("img").filter(function(i,e){
+            !e.attr("src").startsWith("http");
+        }).each(function(i2, e2){ uploadImageToServer(e2.src)} )
+
     }
 
     function refresh() {
