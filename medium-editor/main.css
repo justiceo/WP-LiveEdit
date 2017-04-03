@@ -25,3 +25,16 @@
     font-size: 75%;
     margin-right: 10px;
 }
+
+.ui-dialog .ui-dialog-titlebar {
+    display: none;
+}
+
+div#tags-input_tagsinput {
+    margin-bottom: 10px;
+    width: 100% !important;
+}
+
+div#category_dialog {
+    padding-left: 4px;
+}

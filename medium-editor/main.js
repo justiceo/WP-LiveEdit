@@ -19,6 +19,12 @@ jQuery( document ).ready(function($) {
     var cancelButton = $('<a id="cancel-editing" class="btn btn-default">Cancel</a>');
     var refreshButton = $('<a id="refresh-button" class="btn btn-default">Refresh</a>');
     var buttonContainer = $('<span class="medium-editor-state-buttons">');
+    var category_opener = $('a[rel*="category"]');
+    var category_modal = '<div id="category_dialog"><input id="tags-input" value="uncategorized"/><button class="tag-input-submit">Done</button></div>';
+    var thePost = {
+        categories: [ "test", "again"]
+    };
+    var categories = []; 
     buttonContainer.append(editButton).append(saveButton).append(cancelButton).append(refreshButton);
     if(smartpen_object.post.post_status != 'publish') {
         $(cancelButton).before(savePublishButton);
@@ -30,6 +36,7 @@ jQuery( document ).ready(function($) {
         // ensure placeholders for the editors are set
     }
     $(titleClass).before(buttonContainer);
+    $("body").append(category_modal);
 
     var autolist = new AutoList();
     var headerEditorOptions = {
@@ -65,6 +72,29 @@ jQuery( document ).ready(function($) {
     var cssLink = document.getElementById('medium-editor-theme');
     var beforeSave = [];
 
+
+    $('#tags-input').tagsInput({});
+    $("#category_dialog").dialog({
+        autoOpen: false,
+        open: function() {
+                    console.log("opening tags")
+                    var x = thePost.categories.join();
+                    $('#tags-input').val(x);
+                    
+                    
+                    
+                    $(".tag-input-submit").click(function() {
+                        console.log($('#tags-input').val());
+                        $("#category_dialog").dialog("close");
+                        //$('#tags-input').detach();
+                    });
+                }
+    });
+    category_opener.click(function() {
+        $("#category_dialog").dialog("open");
+    });
+
+
     // no editing at start unless specified in url
     $("#edit-button").hide();
     if(getURLParameter("init-editor") != "true") {
@@ -98,7 +128,7 @@ jQuery( document ).ready(function($) {
 
     $("#refresh-button").click(function(){
         refresh();
-    })
+    });
 
     function initEditor() {
         bodyEditor.setup();
@@ -110,6 +140,33 @@ jQuery( document ).ready(function($) {
         $("#cancel-editing, #save-post, #save-publish, #refresh-button, #edit-button").toggle();
         bodyEditor.destroy();
         headerEditor.destroy();
+    }
+
+    function loadCategories() {
+        $.ajax({
+            url: getEndpoint() + "categories/",
+            method: "GET",
+            beforeSend: function ( xhr ) {
+                xhr.setRequestHeader( 'X-WP-Nonce', smartpen_object.nonce );
+            }
+        }).then(function(response){
+            response.data.forEach(function(i){ categories.push(i.name); });
+        });
+    }
+    loadCategories();
+
+    function loadThePost() {
+        $.get(getEndpoint() + "posts/" + smartpen_object.post.ID).then(
+            function(res) {
+                thePost = res.data;
+            }
+        )
+    }
+    loadThePost();
+
+    function getEndpoint() {
+        var origin = window.location.protocol + "//" + window.location.hostname;
+        return origin + "/wp-json/wp/v2/"
     }
 
     function addOrUpdate(postData, postId) {
