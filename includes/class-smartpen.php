@@ -227,12 +227,14 @@ class SmartPen {
 		wp_register_style( $this->_token . '-medium-theme', esc_url( $this->medium_editor_url ) . 'dist/css/themes/default.min.css', array(), $this->_version);
 		wp_register_style( $this->_token . '-medium-insert-frontend', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/dist/css/medium-editor-insert-plugin-frontend.min.css', array(), $this->_version);
 		wp_register_style( $this->_token . '-medium-insert', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/dist/css/medium-editor-insert-plugin.min.css', array(), $this->_version);
+		wp_register_style( $this->_token . '-medium-tagsinput', esc_url( $this->medium_editor_url ) . 'extensions/jquery.tagsinput.css', array(), $this->_version);
 		wp_register_style( $this->_token . '-medium-custom', esc_url( $this->medium_editor_url ) . 'main.css', array(), $this->_version);
         
 		wp_enqueue_style( $this->_token . '-medium-css' );
 		wp_enqueue_style( $this->_token . '-medium-theme' );
 		wp_enqueue_style( $this->_token . '-medium-insert-frontend' );
 		wp_enqueue_style( $this->_token . '-medium-insert' );
+		wp_enqueue_style( $this->_token . '-medium-tagsinput' );
 		wp_enqueue_style( $this->_token . '-medium-custom' );
 
 
@@ -246,6 +248,7 @@ class SmartPen {
         wp_register_script( $this->_token . '-medium-insert-plugin-fileupload', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/bower_components/blueimp-file-upload/js/jquery.fileupload.js', array(), $this->_version );
         wp_register_script( $this->_token . '-medium-insert-plugin', esc_url( $this->medium_editor_url ) . 'extensions/insert-plugin/dist/js/medium-editor-insert-plugin.js', array(), $this->_version );
         wp_register_script( $this->_token . '-medium-autolist-plugin', esc_url( $this->medium_editor_url ) . 'extensions/autolist/dist/autolist.min.js', array(), $this->_version );
+        wp_register_script( $this->_token . '-medium-tags-input', esc_url( $this->medium_editor_url ) . 'extensions/jquery.tagsinput.js', array(), $this->_version );
         wp_register_script( $this->_token . '-medium-custom-js', esc_url( $this->medium_editor_url ) . 'main.js', array(), $this->_version );
 
         $translation_array = array(
@@ -268,6 +271,7 @@ class SmartPen {
 		wp_enqueue_script( $this->_token . '-medium-insert-plugin-fileupload' );
 		wp_enqueue_script( $this->_token . '-medium-insert-plugin' );
 		wp_enqueue_script( $this->_token . '-medium-autolist-plugin' );
+        wp_enqueue_script( $this->_token . '-medium-tags-input' );
         wp_enqueue_script( $this->_token . '-medium-custom-js' );
 	}
 
