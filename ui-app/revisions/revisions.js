@@ -16,7 +16,7 @@ angular.module('le').component('postRevisions', {
             position: 3,
             handler: revisionsHandler
         };
-        ToolbarService.add(revisionsButton);        
+        ToolbarService.add(revisionsButton);
 
 
         function revisionsHandler() {
@@ -31,7 +31,7 @@ angular.module('le').component('postRevisions', {
                 closeTo: '#le_toolbar',
                 fullscreen: true // Only for -xs, -sm breakpoints.
             });
-            
+
             revisionsButton.disable = true;
             loadPostRevisions();
         }

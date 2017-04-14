@@ -4,7 +4,7 @@
             <h2 flex md-truncate>Settings</h2>
 
             <md-button class="md-icon-button" ng-click="cancel()">
-                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"/>
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog" />
             </md-button>
         </div>
     </md-toolbar>
@@ -13,23 +13,14 @@
         <div layout="column" style="min-width:600px">
             <md-input-container>
                 <label>Post Categories</label>
-                <md-chips
-                        ng-model="categories"
-                        placeholder="Enter a category then press Enter"
-                        delete-button-label="Remove Category"
-                        delete-hint="Press delete to remove category"
-                        secondary-placeholder="+Category">
+                <md-chips ng-model="categories" placeholder="Enter a category then press Enter" delete-button-label="Remove Category" delete-hint="Press delete to remove category"
+                    secondary-placeholder="+Category">
                 </md-chips>
             </md-input-container>
             <md-input-container>
                 <label>Post Tags</label>
-                <md-chips
-                        ng-model="tags"
-                        md-max-chips="10"
-                        placeholder="Enter a tag then press Entersd"
-                        delete-button-label="Remove Tag"
-                        delete-hint="Press delete to remove tag"
-                        secondary-placeholder="+Tag">
+                <md-chips ng-model="tags" md-max-chips="10" placeholder="Enter a tag then press Entersd" delete-button-label="Remove Tag"
+                    delete-hint="Press delete to remove tag" secondary-placeholder="+Tag">
                 </md-chips>
             </md-input-container>
         </div>
@@ -39,4 +30,3 @@
         </div>
     </md-content>
 </div>
-
