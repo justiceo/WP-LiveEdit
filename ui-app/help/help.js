@@ -1,38 +1,37 @@
 angular.module('le')
     .component('leHelp', {
-        templateUrl: 'help/help.html',
+        template: 'help/help.html',
         controller: 'HelpCtrl'
     })
-    .controller('HelpCtrl', function ($mdDialog, ToolbarService) {
+    .controller('HelpCtrl', function ($scope, $mdDialog, ToolbarService) {
+        console.log("HelpCtrl: Initializing...")
         var ctrl = this;
         var helpButton = {
-                id: 'le_help',
-                title: 'Help',
-                icon: 'icon-question',
-				position: 5,
-                handler: helpHandler
-            };
-		ToolbarService.add(helpButton);
-
-        console.log(ctrl);
-		
-		var text = "hello again";
-        ctrl.text = "again and again";
+            id: 'le_help',
+            title: 'Help',
+            icon: 'icon-question',
+            position: 5,
+            handler: helpHandler
+        };
+        ToolbarService.add(helpButton);
 
         function helpHandler() {
             // open the modal 
-           $mdDialog.show({
-              template: '<le-help>',
-              parent: angular.element(document.body),
-              clickOutsideToClose:true,
-              openFrom: '#le_toolbar',
-              closeTo: '#le_toolbar',
-              fullscreen: true // Only for -xs, -sm breakpoints.
+            $mdDialog.show({
+                templateUrl: 'help/help.html',
+                scope: $scope,        // use parent scope in template
+                preserveScope: true,  // do not forget this if use parent scope
+                parent: angular.element(document.body),
+                clickOutsideToClose: true,
+                openFrom: '#le_toolbar',
+                closeTo: '#le_toolbar',
+                fullscreen: true // Only for -xs, -sm breakpoints.
             });
         }
 
-        ctrl.cancel = function() {
+        $scope.cancel = function () {
             console.log("HelpCtrl: cancel click");
-            dismiss();
+            $mdDialog.hide();
         }
+
     });
