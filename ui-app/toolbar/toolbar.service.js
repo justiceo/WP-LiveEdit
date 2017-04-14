@@ -56,5 +56,10 @@ angular.module('le')
             }
         }
 
+        service.disable = function (button) {
+            var index = buttons.indexOf(button);
+            buttons[index].disabled = true;
+        }
+
         return service;
     }]);

@@ -44,7 +44,7 @@ angular.module('le')
 				b.position = ++length;
 				ToolbarService.add(b);
 			});
-			button.disable = true;
+			ToolbarService.disable(button);
         }
 		
 		function saveHandler() {
