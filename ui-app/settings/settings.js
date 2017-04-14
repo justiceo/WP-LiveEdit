@@ -47,8 +47,8 @@ angular.module('le')
 		
 	};
 	
-	this.categories = [];
-	this.tags = [];
+	$scope.categories = [];
+	$scope.tags = [];
 	
 	function loadPostSettings() {			
 		DataService.getAllCategories().then(
