@@ -16,28 +16,8 @@ angular.module('le').component('postRevisions', {
             position: 3,
             handler: revisionsHandler
         };
-        ToolbarService.add(revisionsButton);
+        ToolbarService.add(revisionsButton);        
 
-        var actionButtons = [
-            {
-                id: 'le_revisions_save',
-                title: 'Save',
-                icon: 'icon-check',
-                handler: cancelHandler
-            },
-            {
-                id: 'le_revisions_publish',
-                title: 'Publish',
-                icon: 'icon-cursor',
-                handler: cancelHandler
-            },
-            {
-                id: 'le_revisions_cancel',
-                title: 'Cancel',
-                icon: 'icon-close',
-                handler: cancelHandler
-            }
-        ]
 
         function revisionsHandler() {
             // selecting a revision only drops it's contents in the dom (doesn't persist) - so it's basically a "preview"
@@ -51,23 +31,10 @@ angular.module('le').component('postRevisions', {
                 closeTo: '#le_toolbar',
                 fullscreen: true // Only for -xs, -sm breakpoints.
             });
-            var rev_buttons = ["le_revisions", "le_save", "le_publish", "le_cancel"];
-            var length = ToolbarService.getButtons().length;
-            actionButtons.forEach(function (b) {
-                b.position = ++length;
-                ToolbarService.add(b);
-            });
+            
             revisionsButton.disable = true;
             loadPostRevisions();
         }
-
-        function cancelHandler() {
-            revisionsButton.disable = false;
-            actionButtons.forEach(function (b) {
-                ToolbarService.remove(b);
-            });
-        }
-
         var revisions = [];
 
         function loadPostRevisions() {

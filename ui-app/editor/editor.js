@@ -4,13 +4,13 @@ angular.module('le')
 		template: 'hello world',
 		controller: 'EditorCtrl'
 	})
-.controller('EditorCtrl', function($mdDialog, ToolbarService) {
+.controller('EditorCtrl', function($scope, $mdDialog, ToolbarService) {
         var button = {
                 id: 'le_edit',
                 title: 'Edit',
                 icon: 'icon-note',
 				position: 1,
-                handler: editHandler
+                handler: editHandler,
             };
 		ToolbarService.add(button);
 		
