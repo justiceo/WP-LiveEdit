@@ -5,7 +5,7 @@ angular.module('le')
     controller: 'SettingsCtrl',
 	controllerAs: '$ctrl'
 })
-.controller('SettingsCtrl', function($mdDialog, ToolbarService, DataService) {
+.controller('SettingsCtrl', function($scope, $mdDialog, ToolbarService, DataService) {
 
 	console.log("SettingsCtrl: initializing...");
 	// create the settings button and register it with toolbar service
@@ -29,6 +29,10 @@ angular.module('le')
 		  fullscreen: true // Only for -xs, -sm breakpoints.
 		});
 		loadPostSettings();
+	}
+
+	$scope.cancel = function () {
+		$mdDialog.hide();
 	}
 	
 	// holds all the information necessary to setup a post

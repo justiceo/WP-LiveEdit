@@ -1,6 +1,6 @@
 angular.module('le').component('newPost', {
     templateUrl: 'new-post/new-post.html',
-    controller: function NewPostCtrl($mdDialog, ToolbarService) {
+    controller: function NewPostCtrl($scope, $mdDialog, ToolbarService) {
         var button = {
             id: 'le_new_post',
             title: 'New Post',
@@ -22,5 +22,8 @@ angular.module('le').component('newPost', {
             });
         }
 
+        $scope.cancel = function () {
+            $mdDialog.hide();
+        }
     }
 });
