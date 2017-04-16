@@ -4,7 +4,7 @@ angular.module('le')
 		template: 'hello world',
 		controller: 'EditorCtrl'
 	})
-.controller('EditorCtrl', function($scope, $mdDialog, ToolbarService) {
+.controller('EditorCtrl', function($scope, $mdDialog, $mdToast, ToolbarService) {
         var button = {
                 id: 'le_edit',
                 title: 'Edit',
@@ -20,12 +20,6 @@ angular.module('le')
 					title: 'Save',
 					icon: 'icon-check',
 					handler: saveHandler
-				},
-				{
-					id: 'le_publish',
-					title: 'Publish',
-					icon: 'icon-cursor',
-					handler: publishHandler
 				},
 				{
 					id: 'le_cancel',
@@ -80,14 +74,11 @@ angular.module('le')
 			ToolbarService.remove(button);
 			contentEditor.setup();
 			titleEditor.setup();
+			notify("Editing mode enabled");
         }
 		
 		function saveHandler() {
-			console.log("editor save clicked");
-		}
-		
-		function publishHandler() {
-			
+			notify("post updated");			
 		}
 				
 		function cancelHandler() {
@@ -97,5 +88,14 @@ angular.module('le')
 			contentEditor.destroy();
 			titleEditor.destroy();
 			ToolbarService.add(button);
+		}
+
+		function notify(notice) {
+			$mdToast.show(
+				$mdToast.simple()
+					.textContent(notice)
+					.position('top right')
+					.hideDelay(1500)
+			);
 		}
 });
