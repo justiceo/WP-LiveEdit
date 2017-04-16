@@ -7,3 +7,7 @@
 button md-icon:before {
     font-size: 2em;
 }
+.md-chips .md-chip-input-container {
+    float: none;
+}
+md-input-container .md-errors-spacer { display: none; }

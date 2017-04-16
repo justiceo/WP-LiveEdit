@@ -11,12 +11,12 @@
         <div layout="column" style="min-width:600px">
             <md-input-container>
                 <label>Post Title</label>
-                <input ng-model="user.title">
+                <input ng-model="postTitle">
             </md-input-container>
         </div>
         <div layout="row" layout-align="end end">
-            <md-button class="md-raised">More Options</md-button>
-            <md-button class="md-raised md-primary">Create Post</md-button>
+            <!--<md-button class="md-raised">More Options</md-button>-->
+            <md-button class="md-raised md-primary" ng-click="create(postTitle)">Create Post</md-button>
         </div>
     </md-content>
 </div>

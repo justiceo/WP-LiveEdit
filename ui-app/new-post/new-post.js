@@ -9,11 +9,13 @@ angular.module('le').component('newPost', {
             handler: newPostHandler
         };
         ToolbarService.add(button);
-
+        console.log("initializing new post")
 
         function newPostHandler() {
             $mdDialog.show({
-                template: '<new-post>',
+                templateUrl: 'new-post/new-post.html',
+                scope: $scope,
+                preserveScope: true,
                 parent: angular.element(document.body),
                 clickOutsideToClose: true,
                 openFrom: '#le_toolbar',
@@ -24,6 +26,12 @@ angular.module('le').component('newPost', {
 
         $scope.cancel = function () {
             $mdDialog.hide();
+        }
+
+        $scope.create = function(title) {
+            console.log("EDITOR: creating post title");
+            if(!title) return;
+
         }
     }
 });
