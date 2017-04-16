@@ -48,7 +48,15 @@ angular.module('le')
 		};
 		var contentEditor = new MediumEditor(contentClass,contentEditorOptions);
 		jQuery(contentClass).mediumInsert({
-            editor: contentEditor
+            editor: contentEditor,
+			addons: {
+				images: {
+					fileUploadOptions: { // (object) File upload configuration. See https://github.com/blueimp/jQuery-File-Upload/wiki/Options
+						url: '/upload.php', // (string) A relative path to an upload script
+						acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i // (regexp) Regexp of accepted file types
+					}
+				}
+			}
         });
 
 		// initialize variables for post title
