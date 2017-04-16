@@ -3,6 +3,7 @@
     <section layout="row" layout-align="center center" theme="default">
         <button md-button ng-repeat="button in $ctrl.buttons track by $index"
             class="md-fab"
+            aria-label="{{ button.title }}"
             data-id="{{ button.id }}"
             uib-tooltip="{{ button.title }}"
             tooltip-placement="top"

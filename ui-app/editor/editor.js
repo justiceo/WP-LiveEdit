@@ -33,18 +33,53 @@ angular.module('le')
 					icon: 'icon-close',
 					handler: cancelHandler
 				}
-			]
+			];
 		
+		// initialize editor variables for post content
+		var contentClass = ".post-content";
+		var autolist = new AutoList(); // for autolist plugin
+		var contentEditorOptions = {
+			buttonLabels: 'fontawesome',
+			placeholder: {
+				text: 'Write your story here',
+				hideOnClick: false
+			},
+			extensions: {
+				'autolist': autolist
+			},
+			toolbar: {
+				buttons: ['h1', 'h2', 'bold', 'italic', 'quote', 'pre', 'unorderedlist','orderedlist', 'justifyLeft', 'justifyCenter', 'anchor']
+			}
+
+		};
+		var contentEditor = new MediumEditor(contentClass,contentEditorOptions);
+		jQuery(contentClass).mediumInsert({
+            editor: contentEditor
+        });
+
+		// initialize variables for post title
+		var titleClass = "h2.entry-title";
+		var titleEditorOptions = {
+			disableReturn: true,
+			disableExtraSpaces: true,
+			toolbar: false,
+			placeholder: {
+				text: 'Enter post title',
+				hideOnClick: false
+			}
+		};
+		var titleEditor = new MediumEditor(titleClass, titleEditorOptions);
+
 		function editHandler() {
-			console.log("editor init clicked");
-            // enable edit mode
-            // todo: medium editor here
+			console.log(contentEditor);
 			var length = ToolbarService.getButtons().length;
 			actionButtons.forEach(function(b) {
 				b.position = ++length;
 				ToolbarService.add(b);
 			});
-			ToolbarService.disable(button);
+			ToolbarService.remove(button);
+			contentEditor.setup();
+			titleEditor.setup();
         }
 		
 		function saveHandler() {
@@ -56,10 +91,11 @@ angular.module('le')
 		}
 				
 		function cancelHandler() {
-			console.log("editor cancel clicked");
-			button.disable = false;
 			actionButtons.forEach(function(b) {
 				ToolbarService.remove(b);
 			});
+			contentEditor.destroy();
+			titleEditor.destroy();
+			ToolbarService.add(button);
 		}
 });

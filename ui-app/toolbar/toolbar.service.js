@@ -61,5 +61,10 @@ angular.module('le')
             buttons[index].disabled = true;
         }
 
+        service.enable = function (button) {
+            var index = buttons.indexOf(button);
+            buttons[index].disabled = false;
+        }
+
         return service;
     }]);
