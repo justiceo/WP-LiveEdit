@@ -55,7 +55,8 @@ angular.module('le')
 						url: '/upload.php', // (string) A relative path to an upload script
 						acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i // (regexp) Regexp of accepted file types
 					}
-				}
+				},
+				readmore: true,
 			}
         });
 

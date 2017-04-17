@@ -175,7 +175,6 @@ this["MediumInsert"]["Templates"]["src/js/templates/images-toolbar.hbs"] = Handl
             addons: {
                 images: true, // boolean or object containing configuration
                 embeds: true,
-                readmore: true,
             }
         };
 
