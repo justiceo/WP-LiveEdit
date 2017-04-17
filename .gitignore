@@ -58,3 +58,5 @@ fabric.properties
 redactor/css/redactor.css
 redactor/js/redactor-unminified.js
 redactor/js/redactor.js
+
+dist/
