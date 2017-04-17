@@ -1,0 +1,21 @@
+{
+  "name": "smartpen",
+  "description": "",
+  "main": "Gruntfile.js",
+  "authors": [
+    "Justice Ogbonna <ebesco@yahoo.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/justiceo/WP-LiveEdit",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "medium-editor-autolist": "*"
+  }
+}
