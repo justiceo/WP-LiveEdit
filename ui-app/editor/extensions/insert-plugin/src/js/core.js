@@ -9,7 +9,8 @@
             enabled: true,
             addons: {
                 images: true, // boolean or object containing configuration
-                embeds: true
+                embeds: true,
+                readmore: true,
             }
         };
 
