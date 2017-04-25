@@ -12,7 +12,7 @@ class SettingsCtrl {
 			title: 'Settings',
 			icon: 'icon-settings',
 			position: 4,
-			handler: this.settingsHandler
+			handler: () => this.settingsHandler()
 		};
 		ToolbarService.add(settingsButton);		
 
@@ -37,7 +37,7 @@ class SettingsCtrl {
 		settingsHandler() {
 			console.log("settings: ", this, this.$mdDialog)
 			this.$mdDialog.show({
-				template: '<post-settings>',
+				templateUrl: 'components/settings/settings.html',
 				parent: angular.element(document.body),
 				clickOutsideToClose: true,
 				openFrom: '#le_toolbar',

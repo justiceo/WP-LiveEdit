@@ -1,8 +1,7 @@
 import angular from 'angular';
 
 class NewPostCtrl {
-    constructor($scope, $mdDialog, ToolbarService) {
-        this.$scope = $scope;
+    constructor($mdDialog, ToolbarService) {
         this.$mdDialog = $mdDialog;
         this.ToolbarService = ToolbarService;
         let button = {
@@ -10,7 +9,7 @@ class NewPostCtrl {
             title: 'New Post',
             icon: 'icon-pencil',
             position: 2,
-            handler: this.newPostHandler
+            handler: () => this.newPostHandler()
         };
         ToolbarService.add(button);
         console.log("initializing new post")
@@ -18,9 +17,7 @@ class NewPostCtrl {
 
         newPostHandler() {
             this.$mdDialog.show({
-                templateUrl: 'new-post/new-post.html',
-                scope: this.$scope,
-                preserveScope: true,
+                templateUrl: 'components/new-post/new-post.html',
                 parent: angular.element(document.body),
                 clickOutsideToClose: true,
                 openFrom: '#le_toolbar',

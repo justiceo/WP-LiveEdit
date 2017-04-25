@@ -5,13 +5,15 @@ import angular from 'angular';
 
 class RevisionsCtrl {
     constructor($mdDialog, ToolbarService, DataService) {
+        this.$mdDialog = $mdDialog;
+
         this.revisionsButton = {
             id: 'le_revisions',
             title: 'Revisions',
             icon: 'icon-clock',
             disabled: false,
             position: 3,
-            handler: this.revisionsHandler
+            handler: () => this.revisionsHandler()
         };
         ToolbarService.add(this.revisionsButton);
         this.revisions = []
@@ -23,7 +25,7 @@ class RevisionsCtrl {
             // user should choose to "save" the preview as the post or cancel to return to original
 
             this.$mdDialog.show({
-                template: '<post-revisions>',
+                templateUrl: 'components/revisions/revisions.html',
                 parent: angular.element(document.body),
                 clickOutsideToClose: true,
                 openFrom: '#le_toolbar',

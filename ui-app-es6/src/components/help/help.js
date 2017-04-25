@@ -1,10 +1,9 @@
 import angular from 'angular';
 
 class HelpCtrl {
-    constructor ($scope, $mdDialog, ToolbarService) {
+    constructor ($mdDialog, ToolbarService) {
         console.log("HelpCtrl: Initializing...")
         this.$mdDialog = $mdDialog;
-        this.$scope = $scope;
         let helpButton = {
             id: 'le_help',
             title: 'Help',
@@ -20,8 +19,6 @@ class HelpCtrl {
             console.log("help: ", this, this.$mdDialog);
             this.$mdDialog.show({
                 templateUrl: 'components/help/help.html',
-                scope: this.$scope,        // use parent scope in template
-                preserveScope: true,  // do not forget this if use parent scope
                 parent: angular.element(document.body),
                 clickOutsideToClose: true,
                 openFrom: '#le_toolbar',
