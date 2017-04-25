@@ -52,14 +52,11 @@ class DataService {
             var url = origin + "/wp-json/wp/v2/posts/" + postId;
             this.beforeSave.forEach(f => f(postData));
 
-            $.ajax({
-                url: url,
-                method: "POST",
-                data: postData,
-                beforeSend: function ( xhr ) {
-                    xhr.setRequestHeader( 'X-WP-Nonce', smartpen_object.nonce );
+            this.$http.post(url, postData).beforeSend(
+                function ( xhr ) {
+                    xhr.setRequestHeader( 'X-WP-Nonce', this.smartpen_object.nonce );
                 }
-            }).then(function(response){
+            ).then(function(response){
                 console.log(response);
                 // it was successful, take us there please!
 
@@ -78,7 +75,7 @@ class DataService {
         }
 
         getURLParameter (name) {
-            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(window.location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
         }
 }
 export default DataService;
