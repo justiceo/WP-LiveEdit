@@ -1,16 +1,9 @@
 class ToolbarController {
 	/*@ngInject*/
-	constructor(ItemsService) {
-		this.itemsService = ItemsService;
-		this.items = [];
+	constructor(ToolbarService) {
+		this.buttons = ToolbarService.getButtons();
 	}
-
-	$onInit() {
-		this.itemsService
-			.getItems()
-			.then((items) => this.items = items);
-			// TODO: error handling	
-	}
+	
 }
 
 const toolbarComponent = {
