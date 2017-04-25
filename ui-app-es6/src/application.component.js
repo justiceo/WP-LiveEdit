@@ -3,7 +3,8 @@ class AppController {
 
 const appComponent = {
   template: `
-        <div class="container-fluid">
+        <div class="toolbar-wrapper bottom">
+          <p>toolbar works</p>
           <toolbar></toolbar>
         </div>
     `,
