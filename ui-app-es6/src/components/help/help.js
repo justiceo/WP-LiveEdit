@@ -10,15 +10,16 @@ class HelpCtrl {
             title: 'Help',
             icon: 'icon-question',
             position: 5,
-            handler: this.helpHandler
+            handler: () => this.helpHandler()
         };
         ToolbarService.add(helpButton);
     }
 
         helpHandler() {
             // open the modal 
+            console.log("help: ", this, this.$mdDialog);
             this.$mdDialog.show({
-                templateUrl: 'help/help.html',
+                templateUrl: 'components/help/help.html',
                 scope: this.$scope,        // use parent scope in template
                 preserveScope: true,  // do not forget this if use parent scope
                 parent: angular.element(document.body),

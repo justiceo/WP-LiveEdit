@@ -3,7 +3,7 @@ class AppController {
 
 const appComponent = {
   template: `
-        <div class="toolbar-wrapper bottom">
+        <div id="le_toolbar" class="toolbar-wrapper bottom">
           <p>toolbar works</p>
           <toolbar></toolbar>
         </div>

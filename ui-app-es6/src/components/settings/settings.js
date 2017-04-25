@@ -7,7 +7,7 @@ class SettingsCtrl {
 		this.DataService = DataService;
 		this.$mdDialog = $mdDialog;
 
-		var settingsButton = {
+		let settingsButton = {
 			id: 'le_settings',
 			title: 'Settings',
 			icon: 'icon-settings',
@@ -35,6 +35,7 @@ class SettingsCtrl {
 
 		// when the settings button is clicked, launch the modal and load data for the forms
 		settingsHandler() {
+			console.log("settings: ", this, this.$mdDialog)
 			this.$mdDialog.show({
 				template: '<post-settings>',
 				parent: angular.element(document.body),
